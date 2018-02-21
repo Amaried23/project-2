@@ -1,10 +1,10 @@
 {
-  "name": "Project2",
+  "name": "project2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "istanbul": "^0.4.5",
     "mocha": "^5.0.1"
   }
 }
