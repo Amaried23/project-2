@@ -10,7 +10,7 @@ app.engine('hbs', exphbs({
 	defaultLayout: path.join(__dirname, 'app/views/layouts/main'), 
     extname: '.hbs',
     helpers: {
-        sections: function(name, options){
+        sections:  /* istanbul ignore next */ function(name, options){
             if(!this._sections) this._sections = {}
             this._sections[name] = options.fn(this)
             return null
