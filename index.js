@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars')
 const path = require('path')
+const db = require('./app/models')
 const PORT = process.env.PORT || 3000
 const app = express()
 
@@ -33,6 +34,8 @@ app.get('/', (req, res) => {
     })
 })
 
-app.listen(PORT, () => console.log(`server started on port ${PORT}`))
+db.sequelize.sync().then(function () {
+    app.listen(PORT, () => console.log('and runnin runnin and runnin runnin'))
+})
 
 module.exports = app
