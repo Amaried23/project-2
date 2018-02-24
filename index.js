@@ -28,8 +28,8 @@ app.use(bodyParser.json())
 //Static Files
 app.use('/static', express.static(path.join(__dirname, '/app/public')))
 
-let routes = require('./app/controllers/VictimController')
-app.use(routes)
+let victimRoutes = require('./app/controllers/VictimController')
+app.use(victimRoutes)
 
 
 db.sequelize.sync().then(function () {
