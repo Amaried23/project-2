@@ -34,8 +34,10 @@ app.get('/', (req, res) => {
     })
 })
 
+let hostRoutes = require('./app/controllers/hostController');
+app.use(hostRoutes)
+
 db.sequelize.sync().then(function () {
     app.listen(PORT, () => console.log('and runnin runnin and runnin runnin'))
 })
-
 module.exports = app
