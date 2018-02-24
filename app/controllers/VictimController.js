@@ -37,7 +37,7 @@ router.delete('/victims/delete/:id', (req, res) => {
             id
         }
     })
-
+    // TODO change to front end
     res.redirect('/victims')
 })
 
