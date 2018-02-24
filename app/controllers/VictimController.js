@@ -9,4 +9,11 @@ router.get('/victims', (req, res) => {
     })
 })
 
+router.post('/victims/add', (req, res) => {
+    const payload = req.body
+    db.victims.create(payload)
+    res.redirect('/victims')
+})
+
+
     module.exports = router
