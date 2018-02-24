@@ -3,24 +3,46 @@
       <a id="logo-container" href="#" class="brand-logo">TBD</a>
 
       <div>
-        <a class="waves-effect waves-light btn">Donate Now</a>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modalDonate">Donate Now</a>
+      </div>
+
+      <!-- Donate Now Modal Structure -->
+      <div id="modalDonate" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+          <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+        </div>
+      </div>
+
+      <!-- Login Now Modal Structure -->
+      <div id="modalLogin" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+          <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+        </div>
       </div>
 
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Host Victims</a></li>
-        <li><a href="#">Listings</a></li>
-        <li><a href="#">Member Login</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/add">Host Victims</a></li>
+        <li><a href="/listings">Listings</a></li>
+        <li><a href="#modalLogin" class="modal-trigger">Member Login</a></li>
         
       </ul>
       
 
       <ul id="nav-mobile" class="side-nav">
         <li>Navbar Link</li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Host Victims</a></li>
-        <li><a href="#">Listings</a></li>
-        <li><a href="#">Member Login</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/add">Host Victims</a></li>
+        <li><a href="/listings">Listings</a></li>
+        <li><a href="#modalLogin" class="modal-trigger">Member Login</a>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -35,7 +57,7 @@
           <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
         </div>
         <div class="row center">
-          <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">View Listings</a>
+          <a <a href="/listings"class="btn-large waves-effect waves-light teal lighten-1">View Listings</a>
         </div>
         <br><br>
 
@@ -50,28 +72,37 @@
 
       <!--   Icon Section   -->
       <div class="row">
-        <div class="col s12 m4">
+        <div class="col s12 m3">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
+            <h5 class="center">Put Yourself on  the Map</h5>
 
             <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
           </div>
         </div>
 
-        <div class="col s12 m4">
+        <div class="col s12 m3">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
+            <h5 class="center">Search for Homes</h5>
 
             <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
           </div>
         </div>
 
-        <div class="col s12 m4">
+        <div class="col s12 m3">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">Get in Touch</h5>
+
+            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m3">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
+            <h5 class="center">Donate</h5>
 
             <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
           </div>

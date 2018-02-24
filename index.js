@@ -33,6 +33,25 @@ app.get('/', (req, res) => {
     })
 })
 
+app.get('/add', (req, res) => {
+    res.render('add', {
+        title: 'Add a Listing'
+    })
+})
+
+app.get('/edit', (req, res) => {
+    res.render('edit', {
+        title: 'Edit Information'
+    })
+})
+
+app.get('/listings', (req, res) => {
+    res.render('listings', {
+        title: 'Listings'
+    })
+})
+
+
 app.listen(PORT, () => console.log(`server started on port ${PORT}`))
 
 module.exports = app
