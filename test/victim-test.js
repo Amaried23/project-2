@@ -19,17 +19,23 @@ describe('Victims Model', function () {
                 ]
             },
             first_name: "Sean",
-            last_name: "Kelly",
+            last_name: "Destroyed",
             phone: "7325556677",
             address: "123 main street, red bank, nj",
             email: "spkellydev@gmail.com",
         }
 
-        var newVictim = Victim.create(victimData);
+        Victim.create(victimData).then(function (victim) {
+            //victim name should be equivalent to the fake submission we are using
+            expect(victim.first_name).to.equal("Sean"); 
+            Victim.destroy({
+                where: {
+                    id: victim.id
+                }
+            })
+        })
 
-
-        expect(newVictim.first_name).to.equal("Sean"); 
+        //Ending Mocha
         done()
-
       });
 })
