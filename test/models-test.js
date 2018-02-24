@@ -46,14 +46,13 @@ models.forEach(model => {
         it(`should delete a ${model.modelName} from the database`, function () {
             model.create(modelData).then(function (user) {
                 //victim name should be equivalent to the fake submission we are using
-                expect(user.first_name).to.equal("Sean"); 
                 //remove the entry from the database
                 model.destroy({
                     where: {
                         id: user.id
                     }
                 })
-    
+                
                 try {
                     model.findOne({
                         where: {
@@ -61,6 +60,7 @@ models.forEach(model => {
                         }
                     })
                 } catch (err) {
+                    expect(user.first_name).to.undefined; 
                     if (err) {
                         done()
                     }
@@ -69,29 +69,31 @@ models.forEach(model => {
             })
         })
     
-        it(`should delete a ${model.modelName} from the database`, function () {
+        it(`should update the ${model.modelName} entry in the database`, function () {
             model.create(modelData).then(function (user) {
-                //victim name should be equivalent to the fake submission we are using
-                expect(user.first_name).to.equal("Sean"); 
-                //remove the entry from the database
-                model.destroy({
+                //after user is created, then update a value
+                modelData.guest_count = 12
+
+                model.update(modelData, {
                     where: {
                         id: user.id
                     }
-                })
-    
-                try {
+                }).then(function(data) {
                     model.findOne({
                         where: {
                             id: user.id
                         }
-                    })
-                } catch (err) {
-                    if (err) {
+                    }).then(function (data) {
+                        expect(data.guest_count).to.equal(12);
+                        model.destroy({
+                            where: {
+                                id: user.id
+                            }
+                        })
                         done()
-                    }
-                }
-    
+                    })
+                })
+
             })
         })
     })    
