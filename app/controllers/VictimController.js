@@ -24,7 +24,7 @@ router.put('/victims/update/:id', (req, res) => {
 
     Victims.update(payload, {
         where: {
-            id
+            id //id: id is implied with ES6 js
         }
     })
     res.redirect('/victims')
