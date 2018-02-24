@@ -35,6 +35,12 @@ app.use(victimRoutes)
 let hostRoutes = require('./app/controllers/hostController');
 app.use(hostRoutes)
 
+app.get('/login', function (req, res) {
+    res.render('login', {
+        title: "not needed"
+    })
+})
+
 db.sequelize.sync().then(function () {
     app.listen(PORT, () => console.log('and runnin runnin and runnin runnin'))
 })
