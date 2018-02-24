@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    let Victim = sequelize.define('victim', {
+    let Victims = sequelize.define('victims', {
         guest_count: DataTypes.INTEGER,
         start_date: DataTypes.DATE,
         end_date: DataTypes.DATE,
@@ -13,5 +13,5 @@ module.exports = function(sequelize, DataTypes) {
         email: DataTypes.STRING
     })
 
-    return Victim
+    return Victims
 }

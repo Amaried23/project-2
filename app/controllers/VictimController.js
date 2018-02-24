@@ -1,12 +1,12 @@
+const express = require('express')
+const router = express.Router()
 let db = require('../models')
 
-class Victim {
-    index(req, res) {
-        db.Victim.findAll({}).then(function(data){
-            console.log(data)
-            res.json(victimData)
-        })
-    }
-}
+router.get('/victims', (req, res) => {
+    db.victims.findAll({})
+    .then(function (obj) {
+        res.json(obj)
+    })
+})
 
-module.exports = Victim
+    module.exports = router

@@ -28,10 +28,9 @@ app.use(bodyParser.json())
 //Static Files
 app.use('/static', express.static(path.join(__dirname, '/app/public')))
 
-let victim = require('./app/controllers/VictimController')
-let Victim = new victim()
+let routes = require('./app/controllers/VictimController')
+app.use(routes)
 
-app.get('/victim', Victim.index)
 
 db.sequelize.sync().then(function () {
     app.listen(PORT, () => console.log('and runnin runnin and runnin runnin'))
