@@ -13,6 +13,8 @@ router.get('/listings/:page', async (req, res) => {
     // let unfilteredHosts = await ListingController.index()
     let page = req.params.page
     let limit = 5;
+
+    let located = await ListingController.locate()
     
     if (req.query) {
         if (req.query.limit) {
