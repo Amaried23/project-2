@@ -4,9 +4,9 @@ const faker = require('faker')
 const listingController = require('../controllers/ListingController').ListingController
 const ListingController = new listingController()
 
-router.get('/listings', async (req, res) => {
+router.get('/listings/:page', async (req, res) => {
     // let unfilteredHosts = await ListingController.index()
-    let page = 1 //req.params.page
+    let page = req.params.page
     let paginatedHosts = await ListingController.paginate(page)
     
     
