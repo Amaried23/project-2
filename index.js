@@ -26,13 +26,14 @@ app.set('views', path.join(__dirname, 'app/views'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 //Static Files
-app.use('/static', express.static(path.join(__dirname, '/app/public')))
+app.use('/static', express.static(path.join(__dirname, '/app/public')));
 
-let victimRoutes = require('./app/controllers/VictimController')
-app.use(victimRoutes)
-
-
+let victimRoutes = require('./app/controllers/VictimController');
 let hostRoutes = require('./app/controllers/hostController');
+let emailRoutes = require('./app/controllers/EmailController');
+
+app.use(emailRoutes)
+app.use(victimRoutes)
 app.use(hostRoutes)
 
 app.get('/login', function (req, res) {

@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 let db = require('../models')
 let Victims = db.victims
+let keys = require('../config/keys')
 
 router.get('/victims', (req, res) => {
     Victims.findAll({})
