@@ -42,7 +42,31 @@ app.get('/login', function (req, res) {
     })
 })
 
+<<<<<<< HEAD
 db.sequelize.sync().then(function () {
     app.listen(PORT, () => console.log('and runnin runnin and runnin runnin'))
 })
+=======
+app.get('/add', (req, res) => {
+    res.render('add', {
+        title: 'Add a Listing'
+    })
+})
+
+app.get('/edit', (req, res) => {
+    res.render('edit', {
+        title: 'Edit Information'
+    })
+})
+
+app.get('/listings', (req, res) => {
+    res.render('listings', {
+        title: 'Listings'
+    })
+})
+
+
+app.listen(PORT, () => console.log(`server started on port ${PORT}`))
+
+>>>>>>> sarika-branch
 module.exports = app
