@@ -16,7 +16,6 @@ router.get('/listings/:page', async (req, res) => {
     
     if (req.query) {
         if (req.query.limit) {
-            console.log(req.query)
             limit = JSON.parse(req.query.limit)
         }
     }
