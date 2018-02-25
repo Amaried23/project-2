@@ -36,11 +36,10 @@ models.forEach(model => {
                     where: {
                         id: user.id
                     }
-                })
+                }).then(function() {
+                    done()
+                }) 
             })
-    
-            //Ending Mocha
-            done()
         });
     
         it(`should delete a ${model.modelName} from the database`, function () {
@@ -69,32 +68,23 @@ models.forEach(model => {
             })
         })
     
-        it(`should update the ${model.modelName} entry in the database`, function () {
-            model.create(modelData).then(function (user) {
+        it(`should update the ${model.modelName} entry in the database`, async function () {
+            const user = await model.create(modelData).then(function (user) {
                 //after user is created, then update a value
                 modelData.guest_count = 12
-
-                model.update(modelData, {
+                return model.update(modelData, {
                     where: {
                         id: user.id
                     }
                 }).then(function(data) {
-                    model.findOne({
+                    return model.findOne({
                         where: {
                             id: user.id
                         }
-                    }).then(function (data) {
-                        expect(data.guest_count).to.equal(12);
-                        model.destroy({
-                            where: {
-                                id: user.id
-                            }
-                        })
-                        done()
                     })
                 })
-
             })
+            expect(user.guest_count).to.be.equal(12);
         })
     })    
 });

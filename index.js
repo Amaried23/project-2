@@ -42,6 +42,6 @@ app.get('/login', function (req, res) {
 })
 
 db.sequelize.sync().then(function () {
-    app.listen(PORT, () => console.log('and runnin runnin and runnin runnin'))
+    app.listen(PORT, () => console.log(`running on port ${PORT}`))
 })
 module.exports = app
