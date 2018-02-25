@@ -42,15 +42,10 @@ app.get('/login', function (req, res) {
     })
 })
 
-<<<<<<< HEAD
 app.get('/add', (req, res) => {
     res.render('add', {
         title: 'Add a Listing'
     })
-=======
-db.sequelize.sync().then(function () {
-    app.listen(PORT, () => console.log(`running on port ${PORT}`))
->>>>>>> tests
 })
 
 app.get('/edit', (req, res) => {
