@@ -1,5 +1,8 @@
 <h2>Total Pages:{{ pages }}</h2>
 
+<a class="page-back" href="/listings/back">Previous Page</a>
+<a class="page-next" href="/listings/next">Next Page</a>
+
 {{#each hosts}}
 <div class="row">
   <div class="col s12 m7">
@@ -18,3 +21,72 @@
   </div>
 </div>
 {{/each}}
+
+{{#sections 'footer'}}
+
+<script>
+
+  $(document).ready(function(){
+    function page(page) {
+      this.path = page
+    }
+
+    $('a').on('click', function (e) {
+      e.preventDefault()
+      var link = e.target.classList;
+      let referral = window.location.href;
+      let paginate = new page(referral);
+      paginate.currentPage = function () {
+        return this.path;
+      }
+
+      paginate.url = function (link, newPage, queryString) {
+        window.location = link + "/listings/" + newPage + "?" + queryString
+      }
+
+      paginate.nextPage = function () {
+        var url = this.currentPage();
+        var regExp = /(\/([0-9]+)\?)/;
+        var pageNum = regExp.exec(url)[2];
+
+        regExp = /(\?(.+))/;
+        var queryString = regExp.exec(url)[2];
+        link = window.location.origin;
+
+        var newPage = Number(pageNum) + 1;
+
+        this.url(link, newPage, queryString);
+      }
+
+      paginate.prevPage = function () {
+        var url = this.currentPage();
+        var regExp = /(\/([0-9]+)\?)/;
+        var pageNum = regExp.exec(url)[2];
+
+        regExp = /(\?(.+))/;
+        var queryString = regExp.exec(url)[2];
+        link = window.location.origin;
+
+        var newPage = Number(pageNum) - 1;
+
+        this.url(link, newPage, queryString);
+      }
+
+
+      for (var i = 0; i < link.length; i++) {
+        if (link[i] === 'page-next') {
+          paginate.nextPage()
+        } else if (link[i] === 'page-back') {
+          paginate.prevPage()
+        }
+      }
+
+    });
+  });
+
+
+
+
+</script>
+
+{{/sections }}

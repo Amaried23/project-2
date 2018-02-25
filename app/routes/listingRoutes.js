@@ -4,19 +4,33 @@ const faker = require('faker')
 const listingController = require('../controllers/ListingController').ListingController
 const ListingController = new listingController()
 
+router.get('/listings', (req, res) => {
+    console.log('redirect')
+    res.redirect('/listings/1?limit=5')
+})
+
 router.get('/listings/:page', async (req, res) => {
     // let unfilteredHosts = await ListingController.index()
     let page = req.params.page
+    let limit = 5;
+    
+    if (req.query) {
+        if (req.query.limit) {
+            console.log(req.query)
+            limit = JSON.parse(req.query.limit)
+        }
+    }
 
     let results = await ListingController.paginate(page, {
-        limit: 5,
+        limit: limit,
         offset: 0,
-        $sort: { id: 1 }
+        $sort: { 
+            id: 1 
+        }
     })
+
     let paginatedHosts = results[0]
     let pages = results[1]
-    
-    
 
     res.render('listings', {
         title: "Listings",

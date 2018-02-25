@@ -35,7 +35,9 @@ class HostsController {
     async findAndCount() {
         return await Hosts.findAndCount().then(async function(data) {
             return await data
-        })
+        }).catch(function (error) {
+            res.status(500).send('Internal Server Error');
+        });
     }
 }
 
