@@ -19,7 +19,9 @@ class ListingController {
             $sort: { id: 1 }
         }
 
-        return await HostController.findAll(params)
+        let hosts = await HostController.findAll(params)
+
+        return [hosts, pages]
  
     }
 }

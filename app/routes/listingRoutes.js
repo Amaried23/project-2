@@ -7,13 +7,16 @@ const ListingController = new listingController()
 router.get('/listings/:page', async (req, res) => {
     // let unfilteredHosts = await ListingController.index()
     let page = req.params.page
-    let paginatedHosts = await ListingController.paginate(page)
+    let results = await ListingController.paginate(page)
+    let paginatedHosts = results[0]
+    let pages = results[1]
     
     
 
     res.render('listings', {
         title: "Listings",
-        hosts: paginatedHosts
+        hosts: paginatedHosts,
+        pages
     })
 })
 
