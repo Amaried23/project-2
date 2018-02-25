@@ -14,7 +14,7 @@ const auth = {
 }
 
 
-router.post('/email', (req, res) => {
+router.post('/email/signup', (req, res) => {
     let nodemailerMailgun = nodemailer.createTransport(mg(auth));
 
     let text = {
@@ -26,7 +26,7 @@ router.post('/email', (req, res) => {
         to: 'spkellydev@gmail.com', // An array if you have multiple recipients.
         subject: 'Hey you, awesome!',
         template: {
-          name: 'app/views/email.hbs',
+          name: 'app/views/emails/signup.hbs',
           engine: 'handlebars',
           context: text
         }
