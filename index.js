@@ -5,6 +5,7 @@ const path = require('path')
 const db = require('./app/models')
 const PORT = process.env.PORT || 3000
 const app = express()
+const faker = require('faker')
 
 //Handlebars View Engine
 app.engine('hbs', exphbs({
@@ -66,7 +67,6 @@ app.get('/listings', (req, res) => {
         title: 'Listings'
     })
 })
-
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`))
 

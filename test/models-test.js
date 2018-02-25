@@ -5,41 +5,56 @@ let db = require('../app/models')
 db.hosts.modelName = 'Hosts'
 db.victims.modelName = 'Victims'
 let models = [db.hosts, db.victims]
+const faker = require('faker')
+
+var i = 0;
+
+do {
 
 models.forEach(model => {
     describe(`${model.modelName} Model`, function () {
+        let firstName = faker.fake("{{name.firstName}}")
+        let lastName = faker.fake("{{name.lastName}}")
+        let lat = faker.fake("{{address.latitude}}")
+        let lng = faker.fake("{{address.longitude}}")
+        let email = faker.fake("{{internet.email}}")
+        let address = faker.fake("{{address.streetAddress}}")
+        let phone = faker.phone.phoneNumberFormat().replace(/-/g, '')
+        let startDate = faker.date.recent()
+        let endDate = faker.date.future(faker.random.number(1))
+        let guestCount = faker.random.number({min:1, max:10})
         var modelData = {
-            guest_count: 3,
-            start_date: "2018-01-11T00:00:00.000Z",
-            end_date: "2018-01-12T00:00:00.000Z",
+            guest_count: guestCount,
+            start_date: startDate,
+            end_date: endDate,
             location: {
                 type: "Point",
                 coordinates: [
-                    -74.323564,
-                    40.232323
+                    lat,
+                    lng
                 ]
             },
-            first_name: "Sean",
-            last_name: "Destroyed",
-            phone: "7325556677",
-            address: "123 main street, red bank, nj",
-            email: "spkellydev@gmail.com",
+            first_name: firstName,
+            last_name: lastName,
+            phone: phone,
+            address: address,
+            email: email,
         }
     
         it(`should create a new ${model.modelName}`, function (done) {
     
             model.create(modelData).then(function (user) {
                 //victim name should be equivalent to the fake submission we are using
-                expect(user.first_name).to.equal("Sean"); 
+                expect(user.first_name).to.equal(firstName); 
                 //remove the entry from the database
-                model.destroy({
-                    where: {
-                        id: user.id
-                    }
-                }).then(function() {
-                    done()
-                }) 
-            })
+                // model.destroy({
+                //     where: {
+                //         id: user.id
+                //     }
+                // })
+            }).then(function() {
+                done()
+            }) 
         });
     
         it(`should delete a ${model.modelName} from the database`, function () {
@@ -85,6 +100,13 @@ models.forEach(model => {
                 })
             })
             expect(user.guest_count).to.be.equal(12);
+            model.destroy({
+                where: {
+                    id: user.id
+                }
+            })
         })
     })    
 });
+i++
+} while(i < 1000)
