@@ -7,4 +7,4 @@ exports.mysql = {
   db_pass: ''
 };
 
-exports.mailgun = 'key-2c6399ed00fae00dc4d26097620dd7ae'
+exports.mailgun = process.env.MAILGUN
