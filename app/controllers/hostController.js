@@ -1,11 +1,10 @@
-const express = require('express')
-const router = express.Router()
 let db = require('../models')
 let Hosts = db.hosts
 
 class HostsController {
-    async findAll() {
-        let hostData = await Hosts.findAll({})
+    async findAll(params) {
+        if (!params) params = {}
+        let hostData = await Hosts.findAll(params)
         .then(async function (obj) {
             return await obj
         })
@@ -30,6 +29,12 @@ class HostsController {
             where: {
                 id
             }
+        })
+    }
+
+    async findAndCount() {
+        return await Hosts.findAndCount().then(async function(data) {
+            return await data
         })
     }
 }

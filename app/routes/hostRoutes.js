@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 let db = require('../models')
 let Hosts = db.hosts
-let keys = require('../config/keys')
 const HostsController = require('../controllers/hostController').HostsController
 const HostController = new HostsController()
 

@@ -33,10 +33,12 @@ app.use('/static', express.static(path.join(__dirname, '/app/public')));
 let victimRoutes = require('./app/routes/victimRoutes');
 let hostRoutes = require('./app/routes/hostRoutes');
 let emailRoutes = require('./app/controllers/EmailController');
+let listingRoutes = require('./app/routes/listingRoutes');
 
 app.use(emailRoutes)
 app.use(victimRoutes)
 app.use(hostRoutes)
+app.use(listingRoutes)
 
 app.get('/', function (req, res) {
     res.render('index', {
@@ -59,12 +61,6 @@ app.get('/add', (req, res) => {
 app.get('/edit', (req, res) => {
     res.render('edit', {
         title: 'Edit Information'
-    })
-})
-
-app.get('/listings', (req, res) => {
-    res.render('listings', {
-        title: 'Listings'
     })
 })
 
