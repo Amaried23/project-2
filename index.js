@@ -30,8 +30,8 @@ app.use(bodyParser.json())
 //Static Files
 app.use('/static', express.static(path.join(__dirname, '/app/public')));
 
-let victimRoutes = require('./app/routes/VictimRoutes');
-let hostRoutes = require('./app/controllers/hostController');
+let victimRoutes = require('./app/routes/victimRoutes');
+let hostRoutes = require('./app/routes/hostRoutes');
 let emailRoutes = require('./app/controllers/EmailController');
 
 app.use(emailRoutes)

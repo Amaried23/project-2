@@ -3,43 +3,36 @@ const router = express.Router()
 let db = require('../models')
 let Hosts = db.hosts
 
-router.get('/hosts', (req, res) => {
-    Hosts.findAll({})
-    .then(function (obj) {
-        res.json(obj)
-    })
-})
+class HostsController {
+    async findAll() {
+        let hostData = await Hosts.findAll({})
+        .then(async function (obj) {
+            return await obj
+        })
 
-router.post('/hosts/add', (req, res) => {
-    const payload = req.body
-    //TODO add validation
-    Hosts.create(payload)
-    res.redirect('/hosts')
-})
+        return hostData
+    }
 
-router.put('/hosts/update/:id', (req, res) => {
-    //receiving user input
-    let id = req.params.id
-    let payload = req.body
+    async create(payload) {
+        await Hosts.create(payload)
+    }
 
-    Hosts.update(payload, {
-        where: {
-            id //id: id is implied with ES6 js
-        }
-    })
-    res.redirect('/hosts')
-})
+    async update(payload, id) {
+        await Hosts.update(payload, {
+            where: {
+                id //id: id is implied with ES6 js
+            }
+        })
+    }
 
-router.delete('/hosts/delete/:id', (req, res) => {
-    let id = req.params.id
-    Hosts.destroy({
-        where: {
-            id
-        }
-    })
-    // TODO change to front end
-    res.redirect('/hosts')
-})
+    async destroy(id) {
+        await Hosts.destroy({
+            where: {
+                id
+            }
+        })
+    }
+}
 
 
-module.exports = router
+module.exports = {HostsController}
