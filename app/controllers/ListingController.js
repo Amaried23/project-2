@@ -6,18 +6,11 @@ class ListingController {
         return await HostController.findAll()
     }
 
-    async paginate(page) {
+    async paginate(page, params) {
         let data = await HostController.findAndCount()
-        let limit = 5
-        let offset = 0
+        let limit = params.limit
         let pages = Math.ceil(data.count / limit)
-        offset = limit * (page - 1)
-
-        let params = {
-            limit: limit,
-            offset: offset,
-            $sort: { id: 1 }
-        }
+        params.offset = limit * (page - 1)
 
         let hosts = await HostController.findAll(params)
 
