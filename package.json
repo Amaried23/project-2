@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon index.js",
     "test": "istanbul cover ./node_modules/mocha/bin/_mocha",
-    "coverage" : "cd ./coverage/lcov-report && start chrome index.html"
+    "coverage": "cd ./coverage/lcov-report && start chrome index.html"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +14,10 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "express-handlebars": "^3.0.0"
+    "express-handlebars": "^3.0.0",
+    "nodemon": "^1.17.1",
+    "path": "^0.12.7",
+    "stripe": "^5.5.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",

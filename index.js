@@ -1,38 +1,32 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const exphbs = require('express-handlebars')
-const path = require('path')
-const PORT = process.env.PORT || 3000
-const app = express()
+var express = require("express");
+var stripe = require("stripe")("sk_test_Hx6fBSx86fOfb8SubguAYfxK");
+var bodyParser = require("body-parser");
+var exphbs = require("express-handlebars");
+var path = require("path");
 
-//Handlebars View Engine
-app.engine('hbs', exphbs({
-	defaultLayout: path.join(__dirname, 'app/views/layouts/main'), 
-    extname: '.hbs',
-    helpers: {
-        sections:  /* istanbul ignore next */ function(name, options){
-            if(!this._sections) this._sections = {}
-            this._sections[name] = options.fn(this)
-            return null
-        }
-    }
-}))
+var app = express();
 
-app.set('view engine', 'hbs')
+//Handlebars Middleware
+
+app.engine("handlebars", exphbs({
+    defaultLayout: path.join(__dirname, "app/views/layouts/main")}
+    ));
+app.set("view engine", "handlebars");
 app.set('views', path.join(__dirname, 'app/views'))
 
-//Middleware for Body Parser
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
-//Static Files
-app.use('/static', express.static(path.join(__dirname, '/app/public')))
 
-app.get('/', (req, res) => {
-    res.render('index', {
-        title: 'This is the Title'
-    })
-})
+//body parser middleware
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+//set static folder
+app.use('/static', express.static(path.join(__dirname, '/app/public')));
+
+//routes
+var donorRoutes = require("./app/routes/donorRoutes");
+app.use(donorRoutes);
+
+var PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`))
-
-module.exports = app
