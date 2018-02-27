@@ -5,6 +5,7 @@ const path = require('path')
 const db = require('./app/models')
 const PORT = process.env.PORT || 3000
 const app = express()
+const faker = require('faker')
 
 //Handlebars View Engine
 app.engine('hbs', exphbs({
@@ -16,7 +17,8 @@ app.engine('hbs', exphbs({
             this._sections[name] = options.fn(this)
             return null
         }
-    }
+    },
+    partialsDir: path.join(__dirname, 'app/views/partials')
 }))
 
 app.set('view engine', 'hbs')
@@ -28,13 +30,27 @@ app.use(bodyParser.json())
 //Static Files
 app.use('/static', express.static(path.join(__dirname, '/app/public')));
 
-let victimRoutes = require('./app/controllers/VictimController');
-let hostRoutes = require('./app/controllers/hostController');
+let victimRoutes = require('./app/routes/victimRoutes');
+let hostRoutes = require('./app/routes/hostRoutes');
 let emailRoutes = require('./app/controllers/EmailController');
+let listingRoutes = require('./app/routes/listingRoutes');
 
 app.use(emailRoutes)
 app.use(victimRoutes)
 app.use(hostRoutes)
+app.use(listingRoutes)
+
+app.get('/', function (req, res) {
+    res.render('index', {
+        title: "Helping Hands"
+    })
+})
+
+app.get('/', function (req, res) {
+    res.render('index', {
+        title: "helping hands"
+    })
+})
 
 app.get('/', function (req, res) {
    res.render('index', {
@@ -59,13 +75,6 @@ app.get('/edit', (req, res) => {
         title: 'Edit Information'
     })
 })
-
-app.get('/listings', (req, res) => {
-    res.render('listings', {
-        title: 'Listings'
-    })
-})
-
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`))
 

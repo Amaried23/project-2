@@ -1,46 +1,36 @@
-const express = require('express')
-const router = express.Router()
 let db = require('../models')
 let Victims = db.victims
-let keys = require('../config/keys')
 
-router.get('/victims', (req, res) => {
-    Victims.findAll({})
-    .then(function (obj) {
-        res.json(obj)
-    })
-})
+class VictimsController {
+    async findAll() {
+        let victimData = await Victims.findAll({})
+        .then(async function (obj) {
+            return await obj
+        })
 
-router.post('/victims/add', (req, res) => {
-    const payload = req.body
-    //TODO add validation
-    Victims.create(payload)
-    res.redirect('/victims')
-})
+        return victimData
+    }
 
-router.put('/victims/update/:id', (req, res) => {
-    //receiving user input
-    let id = req.params.id
-    let payload = req.body
+    async create(payload) {
+        await Victims.create(payload)
+    }
 
-    Victims.update(payload, {
-        where: {
-            id //id: id is implied with ES6 js
-        }
-    })
-    res.redirect('/victims')
-})
+    async update(payload, id) {
+        await Victims.update(payload, {
+            where: {
+                id //id: id is implied with ES6 js
+            }
+        })
+    }
 
-router.delete('/victims/delete/:id', (req, res) => {
-    let id = req.params.id
-    Victims.destroy({
-        where: {
-            id
-        }
-    })
-    // TODO change to front end
-    res.redirect('/victims')
-})
+    async destroy(id) {
+        await Victims.destroy({
+            where: {
+                id
+            }
+        })
+    }
+}
 
 
-module.exports = router
+module.exports = {VictimsController}

@@ -1,15 +1,18 @@
-<form>
-    <h3>login</h3>
-    <input type="text">
-    <a href="/email/signup" class="butt">Submit</a>
-</form>
+<div class="container">
+    <form>
+        <h3>login</h3>
+        <input type="text">
+        <a href="#" class="butt">Submit</a>
+    </form>
+</div>
 
+{{#sections 'footer'}}
 <script>
     $('.butt').on('click', function(e) {
-        e.preventDefault();
         console.log('fired')
-        $.post('/email', {
+        $.post('/email/signup', {
             text: $('input').val()
         })
     })
 </script>
+{{/sections}}
