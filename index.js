@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars')
 const path = require('path')
+const db = require('./app/models')
 const PORT = process.env.PORT || 3000
 const app = express()
 
@@ -25,11 +26,25 @@ app.set('views', path.join(__dirname, 'app/views'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 //Static Files
-app.use('/static', express.static(path.join(__dirname, '/app/public')))
+app.use('/static', express.static(path.join(__dirname, '/app/public')));
 
-app.get('/', (req, res) => {
-    res.render('index', {
-        title: 'This is the Title'
+let victimRoutes = require('./app/controllers/VictimController');
+let hostRoutes = require('./app/controllers/hostController');
+let emailRoutes = require('./app/controllers/EmailController');
+
+app.use(emailRoutes)
+app.use(victimRoutes)
+app.use(hostRoutes)
+
+app.get('/', function (req, res) {
+   res.render('index', {
+       title: "helping hands"
+   })
+})
+
+app.get('/login', function (req, res) {
+    res.render('login', {
+        title: "not needed"
     })
 })
 
