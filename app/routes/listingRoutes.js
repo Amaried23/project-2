@@ -14,12 +14,18 @@ router.get('/listings/:page', async (req, res) => {
     let page = req.params.page
     let limit = 5;
 
-    let located = await ListingController.locate(51.5177, -0.0968, 4)
-
+    
     
     if (req.query) {
         if (req.query.limit) {
             limit = JSON.parse(req.query.limit)
+        }
+        
+        if (req.query.zip) {
+            let zip = JSON.parse(req.query.zip)
+            //get lat/lng from zip code
+            let located = await ListingController.byLocation(51.5177, -0.0968, limit)
+            console.log(located)
         }
     }
 
@@ -39,6 +45,7 @@ router.get('/listings/:page', async (req, res) => {
         hosts: paginatedHosts,
         pages
     })
+
 })
 
 module.exports = router
