@@ -12,7 +12,9 @@
 
 </head>
 <body>
+    {{> shared/navbar }}
     {{{ body }}}
+    {{> shared/footer }}
 
     <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -26,6 +28,7 @@
   <script src="/static/assets/js/materialize.js"></script>
   <script src="/static/assets/js/init.js"></script>
 
+  {{{_sections.footer}}}
   
 </body>
 </html>
