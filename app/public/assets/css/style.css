@@ -15,11 +15,42 @@ p {
   line-height: 2rem;
 }
 
-nav .btn{
+h5 {
+  font-size: 18px;
+}
+
+nav .donateButton {
   float: right;
   margin-top: 10px;
 }
 
+.modal{
+  width: 560px !important;
+}
+
+input{
+  border-bottom: 1px solid #9e9e9e !important;
+}
+
+input.select-dropdown{
+  margin-top: 32px !important;
+  height: 1.5rem !important;
+  color: #9e9e9e !important;
+}
+
+hr.style{
+  border: 0;
+  border-bottom: 1px dashed #26a69a;
+}
+
+.modal h4, a.link {
+  color: #26a69a !important;
+}
+
+.modal h5, p, .input-field{
+  color: #444;
+  margin: 0px;
+}
 
 .button-collapse {
   color: #26a69a;
@@ -47,6 +78,11 @@ nav .btn{
 }
 
 @media only screen and (max-width : 600px) {
+
+  .modal{
+  width: 80% !important;
+}
+
   #index-banner .section {
     top: 0;
   }

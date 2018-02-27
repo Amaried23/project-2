@@ -36,6 +36,12 @@ app.use(emailRoutes)
 app.use(victimRoutes)
 app.use(hostRoutes)
 
+app.get('/', function (req, res) {
+   res.render('index', {
+       title: "helping hands"
+   })
+})
+
 app.get('/login', function (req, res) {
     res.render('login', {
         title: "not needed"
