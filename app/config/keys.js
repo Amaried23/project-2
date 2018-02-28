@@ -8,3 +8,5 @@ exports.mysql = {
 };
 
 exports.mailgun = process.env.MAILGUN
+
+exports.stripe = process.env.STRIPE

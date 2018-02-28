@@ -1,0 +1,27 @@
+<section class="py-2">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h2 class="display-3 mt-3 pt-5">
+				Donation
+			</h2>
+			<p class="lead"> Donate to help the victims of natural disaters</p>
+			<form action="/charge" method="POST">
+				<script
+				src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+				data-key="pk_test_THMAYzZUNYxZYGPTXUSYMMMW"
+				data-amount="1000"
+				data-name="Helping Hands"
+				data-description="Help a person be in a safe space."
+				data-locale="auto">
+				</script>
+				<script>
+					//hide default stripe button
+					document.getElementsByClassName("stripe-button-el")[0].style.display = "none";
+				</script>
+				<button type="submit" class="btn btn-outline-dark  text-black btn-lg"> Donate </button>
+			</form>
+		</div>
+	</div>
+</section>
+
+
