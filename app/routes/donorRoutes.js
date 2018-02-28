@@ -3,10 +3,6 @@ var stripe = require("stripe")("sk_test_Hx6fBSx86fOfb8SubguAYfxK");
 
 var router = express.Router();
 
-router.get("/", (req, res) => {
-	res.render("index");
-})
-
 router.post("/charge", (req, res) => {
 	var amount = 1000;
 	console.log(req.body);
