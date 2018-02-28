@@ -24,7 +24,7 @@ router.get('/listings/:page', async (req, res) => {
         if (req.query.zip) {
             let zip = JSON.parse(req.query.zip)
             //get lat/lng from zip code
-            let located = await ListingController.byLocation(51.5177, -0.0968, limit)
+            let located = await ListingController.byLocation(51.5177, -0.0968)
             console.log(located)
         }
     }

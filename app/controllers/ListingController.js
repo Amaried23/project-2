@@ -20,8 +20,8 @@ class ListingController {
         return [hosts, pages]
     }
 
-    async byLocation(lat, lng, limit) {
-        return await db.sequelize.query('SELECT id, first_name, X(location) AS \'latitude\', Y(location) AS \'longitude\',(GLength(LineStringFromWKB(LineString(location,GeomFromText(\'POINT('+lat +' ' +lat+')\'))))) AS distance FROM hosts ORDER BY distance ASC LIMIT ' + limit + ';').then((data) => {
+    async byLocation(lat, lng) {
+        return await db.sequelize.query('SELECT id, first_name, X(location) AS \'latitude\', Y(location) AS \'longitude\',(GLength(LineStringFromWKB(LineString(location,GeomFromText(\'POINT('+lat +' ' +lat+')\'))))) AS distance FROM hosts ORDER BY distance ASC;').then((data) => {
             return data
         }).catch(err => {
             if (err) console.log(err)
