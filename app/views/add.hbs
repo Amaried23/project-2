@@ -1,63 +1,3 @@
-
-  <div class="container">
-    <div class="section">
-
-       <!--   filter Section   -->
-      <div class="row">
-        <div class="col s12">
-          <div class="filterForm">
-            <form>
-            <div class="row">
-              <h5>Filter Results</h5>
-              <hr class="style">
-              <div class="input-field col s6">
-                <input id="filterAddress" type="text" class="validate">
-                <label for="filterAddress">Your Address</label>
-              </div>
-
-              <div class="input-field col s3">
-                <input id="checkIn" type="text" class="datepicker">
-                <label for="checkIn">Check In</label>
-              </div>
-
-              <div class="input-field col s3">
-                <input id="checkOut" type="text" class="datepicker">
-                <label for="checkOut">Check Out</label>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="input-field col s3">
-                <input id="guestNum" type="number" name="quantity" min="1" max="20">
-                <label for="guestNum">Number of Guests</label>
-              </div>
-              <div class="col s3 checkbox">
-                <input type="checkbox" id="hasPets">
-                <label for="hasPets">Pets?</label>
-              </div>
-              <div class="input-field col s3 right">
-                 <a href="#" class="waves-effect waves-light btn filterButton">Filter</a>
-              </div>
-            </div>
-          </form> 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-        </div>
-      </div>
-    </div>
-    <div class="parallax"><img src="/static/assets/images/background2.jpg" alt="Unsplashed background img 2"></div>
-  </div>
-
   <div class="container">
     <div class="section">
 
@@ -171,6 +111,12 @@
                 <div class="col s3 push-s2 valign-wrapper checkbox">
                 <input type="checkbox" id="hostPets">
                 <label for="hostPets">Allow Pets?</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6 push-s7 valign-wrapper">
+                <button href="/email/signup" class="btn waves-effect waves-light submitListing" type="submit" name="action">Submit Listing<i class="material-icons right">send</i>
+                </button>
               </div>
             </div>
           </div>
