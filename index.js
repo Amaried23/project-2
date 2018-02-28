@@ -46,18 +46,6 @@ app.get('/', function (req, res) {
     })
 })
 
-app.get('/', function (req, res) {
-    res.render('index', {
-        title: "helping hands"
-    })
-})
-
-app.get('/', function (req, res) {
-   res.render('index', {
-       title: "helping hands"
-   })
-})
-
 app.get('/login', function (req, res) {
     res.render('login', {
         title: "not needed"
