@@ -1,0 +1,22 @@
+<!-- Donate Now Modal Structure -->
+<div id="modalDonate">
+      {{!-- {{>forms/formDisplay}} --}}
+      <!-- using stripe checkout form-->
+      <form  action="/charge" method="POST">
+        <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_THMAYzZUNYxZYGPTXUSYMMMW"
+        data-amount="1000"
+        data-name="Helping Hands"
+        data-description="Help a person be in a safe space."
+        data-locale="auto"
+        data-allow-remember-me="false">
+        </script>
+        <script>
+          //hide default stripe button
+          document.getElementsByClassName("stripe-button-el")[0].style.display = "none";
+        </script>
+        <button type="submit" class="waves-effect waves-light btn modal-trigger donateButton"> Donate Now</button>
+    </form>
+</div>
+

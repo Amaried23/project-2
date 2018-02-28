@@ -1,0 +1,86 @@
+ <!-- Login Modal Structure -->
+      <div id="modalLogin" class="modal">
+        <div class="modal-content">
+          <h4>Log In</h4>
+          <hr class="style">
+          <form>
+            <div class="row">
+              <div class="input-field col s6 push-s3">
+                <input id="loginEmail" type="email" class="validate">
+                <label for="loginEmail">Email</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6 push-s3">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6 push-s6 valign-wrapper">
+                <a href="/email/signup" class="modal-action modal-close waves-effect waves-light btn loginButt">Log In</a>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <div class="center">
+                  <hr class="style">
+                  <p>Not a Member? <a class="modal-trigger modal-close center link" href="#modalSignup">Sign Up</a></p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Sign up Modal Structure -->
+      <div id="modalSignup" class="modal">
+        <div class="modal-content">
+          <h4>Become a Member</h4>
+          <hr class="style">
+          <form>
+            <div class="row">
+              <div class="input-field col s6 push-s3">
+                <input id="signEmail" type="email" class="validate">
+                <label for="signEmail">Email</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s4 push-s2">
+                  <input id="newFirst_name" type="text" class="validate">
+                  <label for="newFirst_name">First Name</label>
+                </div>
+                <div class="input-field col s4 push-s2">
+                  <input id="newLast_name" type="text" class="validate">
+                  <label for="newLast_name">Last Name</label>
+                </div>
+              </div>
+
+            <div class="row">
+              <div class="input-field col s6 push-s3">
+                <input id="newPassword" type="password" class="validate">
+                <label for="newPassword"> Create a Password</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6 push-s6 valign-wrapper">
+                <a href="/email/signup" class="modal-action modal-close waves-effect waves-light btn loginButt">Sign Up</a>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <div class="center">
+                  <hr class="style">
+                  <p>Already a Member? <a class="modal-trigger modal-close center link" href="#modalLogin">Log In</a></p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>

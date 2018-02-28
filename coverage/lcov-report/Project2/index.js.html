@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">89.74% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>20/20</span>
+        <span class='fraction'>35/39</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">89.19% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>19/19</span>
+        <span class='fraction'>33/37</span>
       </div>
       <div class='fl pad1y'>
         <span class="strong">4 statements, 1 function, 2 branches</span>
@@ -84,7 +84,46 @@
 35
 36
 37
-38</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -104,17 +143,52 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -125,8 +199,10 @@
 const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars')
 const path = require('path')
+const db = require('./app/models')
 const PORT = process.env.PORT || 3000
 const app = express()
+const faker = require('faker')
 &nbsp;
 //Handlebars View Engine
 app.engine('hbs', exphbs({
@@ -138,7 +214,8 @@ app.engine('hbs', exphbs({
 <span class="cstat-skip" title="statement not covered" >            this._sections[name] = options.fn(this)</span>
 <span class="cstat-skip" title="statement not covered" >            return null</span>
         }
-    }
+    },
+    partialsDir: path.join(__dirname, 'app/views/partials')
 }))
 &nbsp;
 app.set('view engine', 'hbs')
@@ -148,15 +225,49 @@ app.set('views', path.join(__dirname, 'app/views'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 //Static Files
-app.use('/static', express.static(path.join(__dirname, '/app/public')))
+app.use('/static', express.static(path.join(__dirname, '/app/public')));
 &nbsp;
-app.get('/', (req, res) =&gt; {
+let victimRoutes = require('./app/routes/victimRoutes');
+let hostRoutes = require('./app/routes/hostRoutes');
+let emailRoutes = require('./app/controllers/EmailController');
+let listingRoutes = require('./app/routes/listingRoutes');
+&nbsp;
+app.use(emailRoutes)
+app.use(victimRoutes)
+app.use(hostRoutes)
+app.use(listingRoutes)
+&nbsp;
+app.get('/', function (req, res) {
     res.render('index', {
-        title: 'This is the Title'
+        title: "Helping Hands"
     })
 })
 &nbsp;
-app.listen(PORT)
+app.get('/', <span class="fstat-no" title="function not covered" >function (req, res) {</span>
+<span class="cstat-no" title="statement not covered" >    res.render('index', {</span>
+        title: "helping hands"
+    })
+})
+&nbsp;
+app.get('/login', <span class="fstat-no" title="function not covered" >function (req, res) {</span>
+<span class="cstat-no" title="statement not covered" >    res.render('login', {</span>
+        title: "not needed"
+    })
+})
+&nbsp;
+app.get('/add', (req, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >    res.render('add', {</span>
+        title: 'Add a Listing'
+    })
+})
+&nbsp;
+app.get('/edit', (req, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >    res.render('edit', {</span>
+        title: 'Edit Information'
+    })
+})
+&nbsp;
+app.listen(PORT, () =&gt; console.log(`server started on port ${PORT}`))
 &nbsp;
 module.exports = app</pre></td></tr>
 </table></pre>
@@ -164,7 +275,7 @@ module.exports = app</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Feb 22 2018 18:04:50 GMT-0500 (Eastern Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Feb 26 2018 19:29:21 GMT-0500 (Eastern Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>
