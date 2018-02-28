@@ -1,5 +1,5 @@
 const express = require('express')
-const { stripe } = require('./app/config/keys')
+const stripeKey = require('./app/config/keys').stripe
 const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars')
 const path = require('path')
@@ -7,7 +7,7 @@ const db = require('./app/models')
 const PORT = process.env.PORT || 3000
 const app = express()
 const faker = require('faker')
-var stripe = require("stripe")(stripe);
+var stripe = require("stripe")(stripeKey);
 
 //Handlebars View Engine
 app.engine('hbs', exphbs({
@@ -65,7 +65,5 @@ app.get('/edit', (req, res) => {
         title: 'Edit Information'
     })
 })
-
-var PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`))
