@@ -74,4 +74,8 @@ app.get("/charge", (req, res) => {
     })
 })
 
+app.get("/contact", (req, res) => {
+    res.render("contact")
+})
+
 app.listen(PORT, () => console.log(`server started on port ${PORT}`))
