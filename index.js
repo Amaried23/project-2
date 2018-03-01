@@ -74,6 +74,8 @@ app.get('/contact', (req, res) => {
     })
 })
 
-app.listen(PORT, () => console.log(`server started on port ${PORT}`))
+db.sequelize.sync().then(function () {
+    app.listen(PORT, () => console.log('PORT started on ' + PORT))
+})
 
 module.exports = app
