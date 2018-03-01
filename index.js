@@ -36,11 +36,13 @@ let victimRoutes = require('./app/routes/victimRoutes');
 let hostRoutes = require('./app/routes/hostRoutes');
 let emailRoutes = require('./app/controllers/EmailController');
 let listingRoutes = require('./app/routes/listingRoutes');
+let donorRoutes = require("././app/routes/donorRoutes");
 
 app.use(emailRoutes)
 app.use(victimRoutes)
 app.use(hostRoutes)
 app.use(listingRoutes)
+app.use(donorRoutes);
 
 app.get('/', function (req, res) {
     res.render('index', {
@@ -63,6 +65,12 @@ app.get('/add', (req, res) => {
 app.get('/edit', (req, res) => {
     res.render('edit', {
         title: 'Edit Information'
+    })
+})
+
+app.get('/contact', (req, res) => {
+    res.render('contact', {
+        title: 'Contact'
     })
 })
 
