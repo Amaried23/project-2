@@ -1,57 +1,163 @@
-
-  <div class="container">
+<div class="container">
     <div class="section">
 
-      <!--   Icon Section   -->
       <div class="row">
-        <div class="col s12 m3">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Put Yourself on  the Map</h5>
+        <div class="col s12 center">
+          <h4>Update Your Information</h4>
+          <hr class="style">
+            <div class="input-field col s4 push-s2">
+              <input id="hostFirst_name" type="text" class="validate">
+              <label for="hostFirst_name">First Name</label>
+            </div>
+            <div class="input-field col s4 push-s2">
+              <input id="hostLast_name" type="text" class="validate">
+              <label for="hostLast_name">Last Name</label>
+            </div>
 
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
+            <div class="row">
+              <div class="input-field col s8 push-s2">
+                <input id="hostEmail" type="email" class="validate">
+                <label for="hostEmail">Email</label>
+              </div>
+            </div> 
 
-        <div class="col s12 m3">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">Search for Homes</h5>
+            <div class="row">
+              <div class="input-field col s8 push-s2">
+                <input id="hostPhone" type="tel" class="validate">
+                <label for="hostPhone">Phone Number</label>
+              </div>
+            </div>
 
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
+            <div class="row">
+              <div class="input-field col s8 push-s2">
+                <input id="hostAddressStreet" type="text" class="validate">
+                <label for="hostAddressStreet">Address</label>
+              </div>
+            </div>
+              
+            <div class="row">
+              <div class="input-field col s3 push-s2">
+                <input id="hostAddressCity" type="text" class="validate">
+                <label for="hostAddressCity">City</label>
+              </div>
+              <div class="input-field col s2 push-s2 hostState">
+                <select>
+                  <option value="" disabled selected>State</option>
+                  <option value="AL">AL</option>
+                  <option value="AK">AK</option>
+                  <option value="AR">AR</option>  
+                  <option value="AZ">AZ</option>
+                  <option value="CA">CA</option>
+                  <option value="CO">CO</option>
+                  <option value="CT">CT</option>
+                  <option value="DC">DC</option>
+                  <option value="DE">DE</option>
+                  <option value="FL">FL</option>
+                  <option value="GA">GA</option>
+                  <option value="HI">HI</option>
+                  <option value="IA">IA</option>  
+                  <option value="ID">ID</option>
+                  <option value="IL">IL</option>
+                  <option value="IN">IN</option>
+                  <option value="KS">KS</option>
+                  <option value="KY">KY</option>
+                  <option value="LA">LA</option>
+                  <option value="MA">MA</option>
+                  <option value="MD">MD</option>
+                  <option value="ME">ME</option>
+                  <option value="MI">MI</option>
+                  <option value="MN">MN</option>
+                  <option value="MO">MO</option>  
+                  <option value="MS">MS</option>
+                  <option value="MT">MT</option>
+                  <option value="NC">NC</option>  
+                  <option value="NE">NE</option>
+                  <option value="NH">NH</option>
+                  <option value="NJ">NJ</option>
+                  <option value="NM">NM</option>      
+                  <option value="NV">NV</option>
+                  <option value="NY">NY</option>
+                  <option value="ND">ND</option>
+                  <option value="OH">OH</option>
+                  <option value="OK">OK</option>
+                  <option value="OR">OR</option>
+                  <option value="PA">PA</option>
+                  <option value="RI">RI</option>
+                  <option value="SC">SC</option>
+                  <option value="SD">SD</option>
+                  <option value="TN">TN</option>
+                  <option value="TX">TX</option>
+                  <option value="UT">UT</option>
+                  <option value="VT">VT</option>
+                  <option value="VA">VA</option>
+                  <option value="WA">WA</option>
+                  <option value="WI">WI</option>  
+                  <option value="WV">WV</option>
+                  <option value="WY">WY</option>
+                </select>   
+                
+              </div>
 
-        <div class="col s12 m3">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">Get in Touch</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m3">
-          <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Donate</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+              <div class="input-field col s3 push-s2">
+                <input id="hostAddressZip" type="text" class="validate">
+                <label for="hostAddressZip">Zip/Postal Code</label>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col s5 push-s2">
+                  <div id="guest-slider"></div>
+                  <label for="guest-slider"> Number of guests you want to host</label>
+                </div>
+                <div class="col s3 push-s2 valign-wrapper checkbox">
+                <input type="checkbox" id="hostPets">
+                <label for="hostPets">Allow Pets?</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6 push-s7 valign-wrapper">
+                <button href="/email/signup" class="btn waves-effect waves-light submitListing" type="submit" name="action">Update Listing<i class="material-icons right">send</i>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
-  </div>
+
 
 
   <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
       <div class="container">
         <div class="row center">
-          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="static/assets/images/background3.jpg" alt="Unsplashed background img 3"></div>
+    <div class="parallax"><img src="/static/assets/images/background3.jpg" alt="Unsplashed background img 3"></div>
   </div>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+
+  $(document).ready(function(){
+   
+     var slider = document.getElementById('guest-slider');
+    noUiSlider.create(slider, {
+     start: [4, 15],
+     connect: true,
+     step: 1,
+     orientation: 'horizontal', // 'horizontal' or 'vertical'
+     range: {
+       'min': 0,
+       'max': 20
+     },
+     format: wNumb({
+       decimals: 0
+     })
+    });
+  });
+
+</script>
+        
+  <script src="/static/assets/js/nouislider.js"></script>
+
