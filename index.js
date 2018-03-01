@@ -66,13 +66,6 @@ app.get('/edit', (req, res) => {
     })
 })
 
-
-app.get('/listings', (req, res) => {
-    res.render('listings', {
-        title: 'Listings'
-    })
-})
-
 app.listen(PORT, () => console.log(`server started on port ${PORT}`))
 
 module.exports = app
