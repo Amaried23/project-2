@@ -13,6 +13,7 @@ router.get('/hosts', async (req, res) => {
 
 router.post('/hosts/add', async (req, res) => {
     let form = req.body
+    console.log(form)
 
     const payload = {
         first_name: form.first_name,
@@ -22,15 +23,22 @@ router.post('/hosts/add', async (req, res) => {
         address: form.address_street + ' ' + form.address_city + ' ' + form.address_state + ' ' + form.address_zip,
         guest_count: form.guest_count,
         location: {
+            type: "Point",
             coordinates: [
                 "-37.1196",
                 "42.6733"
             ]
-        }
+        },
+        start_date: form.start_date,
+        end_date: form.end_date
     }
+    console.log(payload)
     
     //TODO add validation
     await HostController.create(payload)
+        .catch((err) => {
+            if(err) console.log(err)
+        })
     res.redirect('/add')
 })
 
