@@ -46,8 +46,8 @@
   </div>
 <h2>Total Pages:{{ pages }}</h2>
 
-<a class="page-back" href="/listings/back">Previous Page</a>
-<a class="page-next" href="/listings/next">Next Page</a>
+<a class="special-link page-back" href="/listings/back">Previous Page</a>
+<a class="special-link page-next" href="/listings/next">Next Page</a>
 
 {{#each hosts}}
 <div class="row">
@@ -78,7 +78,7 @@
       this.path = page
     }
 
-    $('a').on('click', function (e) {
+    $('.special-link').on('click', function (e) {
       e.preventDefault()
       var link = e.target.classList;
       let referral = window.location.href;
