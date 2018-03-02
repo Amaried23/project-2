@@ -41,7 +41,7 @@ router.post('/email/signup', (req, res) => {
 
       console.log('success')
 
-    res.redirect('/login')
+    res.redirect('/')
 })
 
 module.exports = router

@@ -74,6 +74,12 @@ app.get('/contact', (req, res) => {
     })
 })
 
+app.get('/l', (req, res) => {
+    res.render('l', {
+        title: 'title'
+    })
+})
+
 db.sequelize.sync().then(function () {
     app.listen(PORT, () => console.log('PORT started on ' + PORT))
 })
