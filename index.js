@@ -1,4 +1,5 @@
 const express = require('express')
+const stripeKey = require('./app/config/keys').stripe
 const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars')
 const path = require('path')
@@ -6,6 +7,7 @@ const db = require('./app/models')
 const PORT = process.env.PORT || 3000
 const app = express()
 const faker = require('faker')
+var stripe = require("stripe")(stripeKey);
 
 //Handlebars View Engine
 app.engine('hbs', exphbs({
@@ -34,28 +36,18 @@ let victimRoutes = require('./app/routes/victimRoutes');
 let hostRoutes = require('./app/routes/hostRoutes');
 let emailRoutes = require('./app/controllers/EmailController');
 let listingRoutes = require('./app/routes/listingRoutes');
+let donorRoutes = require("././app/routes/donorRoutes");
 
 app.use(emailRoutes)
 app.use(victimRoutes)
 app.use(hostRoutes)
 app.use(listingRoutes)
+app.use(donorRoutes);
 
 app.get('/', function (req, res) {
     res.render('index', {
         title: "Helping Hands"
     })
-})
-
-app.get('/', function (req, res) {
-    res.render('index', {
-        title: "helping hands"
-    })
-})
-
-app.get('/', function (req, res) {
-   res.render('index', {
-       title: "helping hands"
-   })
 })
 
 app.get('/login', function (req, res) {
@@ -76,6 +68,14 @@ app.get('/edit', (req, res) => {
     })
 })
 
-app.listen(PORT, () => console.log(`server started on port ${PORT}`))
+app.get('/contact', (req, res) => {
+    res.render('contact', {
+        title: 'Contact'
+    })
+})
+
+db.sequelize.sync().then(function () {
+    app.listen(PORT, () => console.log('PORT started on ' + PORT))
+})
 
 module.exports = app

@@ -1,4 +1,49 @@
+<div class="container">
+    <div class="section">
 
+       <!--   filter Section   -->
+      <div class="row">
+        <div class="col s12">
+          <div class="filterForm">
+            <form>
+            <div class="row">
+              <h5>Filter Results</h5>
+              <hr class="style">
+              <div class="input-field col s6">
+                <input id="filterAddress" type="text" class="validate">
+                <label for="filterAddress">Your Address</label>
+              </div>
+
+              <div class="input-field col s3">
+                <input id="checkIn" type="text" class="datepicker">
+                <label for="checkIn">Check In</label>
+              </div>
+
+              <div class="input-field col s3">
+                <input id="checkOut" type="text" class="datepicker">
+                <label for="checkOut">Check Out</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s3">
+                <input id="guestNum" type="number" name="quantity" min="1" max="20">
+                <label for="guestNum">Number of Guests</label>
+              </div>
+              <div class="col s3 checkbox">
+                <input type="checkbox" id="hasPets">
+                <label for="hasPets">Pets?</label>
+              </div>
+              <div class="input-field col s3 right">
+                 <a href="#" class="waves-effect waves-light btn filterButton">Filter</a>
+              </div>
+            </div>
+          </form> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <h2>Total Pages:{{ pages }}</h2>
 
 <a class="page-back" href="/listings/back">Previous Page</a>
@@ -16,7 +61,7 @@
         <p>{{first_name}} {{ last_name }}</p>
       </div>
       <div class="card-action">
-        <a href="#">This is a link</a>
+        <a href="#">This is a link </a>
       </div>
     </div>
   </div>
@@ -24,18 +69,8 @@
 {{/each}}
 
 {{#sections 'footer'}}
-
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-        </div>
-      </div>
-    </div>
-    <div class="parallax"><img src="/static/assets/images/background3.jpg" alt="Unsplashed background img 3"></div>
-  </div>
 <script>
+  console.log('inig')
 
 
   $(document).ready(function(){
@@ -47,12 +82,14 @@
       e.preventDefault()
       var link = e.target.classList;
       let referral = window.location.href;
+      console.log(referral)
       let paginate = new page(referral);
       paginate.currentPage = function () {
         return this.path;
       }
 
       paginate.url = function (link, newPage, queryString) {
+        console.log(link + "/listings/" + newPage + "?" + queryString)
         window.location = link + "/listings/" + newPage + "?" + queryString
       }
 

@@ -8,13 +8,6 @@ var env       = process.env.NODE_ENV || 'development';
 var config;
 
 
-  if (process.platform !== "win32") {
-    config = require(__dirname + '/../config/config.json')[env];
-  } 
-  else {
-    config = require(__dirname + '/..\\config\\config.json')[env];
-  }
-
 // require(__dirname + '/../config/config.json')[env];
 
 if (process.platform !== "win32") {

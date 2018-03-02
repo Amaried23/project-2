@@ -24,6 +24,11 @@ nav .donateButton {
   margin-top: 10px;
 }
 
+.logoImg{
+  margin: 10px 0 0;
+  width: 40px;
+}
+
 .modal{
   width: 560px !important;
 }
@@ -49,7 +54,7 @@ hr.style{
 
 .modal h5, p, .input-field{
   color: #444;
-  margin: 0px;
+  margin: 7px 0 0 0;
 }
 
 .button-collapse {
@@ -83,6 +88,11 @@ hr.style{
     top: 10%;
   }
 
+  #logo-container {
+
+    width: 75%;
+  }
+
 }
 
 @media only screen and (max-width : 600px) {
@@ -97,7 +107,7 @@ hr.style{
 
   #logo-container {
 
-    width: 50%;
+    width: 75%;
     font-size: 24px;
   }
 
