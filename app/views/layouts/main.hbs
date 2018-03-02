@@ -11,6 +11,11 @@
     <link href="/static/assets/css/nouislider.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   	<link href="/static/assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+    <link rel="icon" href="/static/assets/images/home-solid/64x64.png" type="image/png" sizes="16x16">
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH-6r9WrlUwy1swTIHIYFrm4IcXcjZDEk&libraries=geometry&callback=initMap">
+    </script>
+
 </head>
 <body>
   
@@ -24,7 +29,7 @@
   <script>
 
   $(document).ready(function(){
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    // modal for calendar features
     $('.modal').modal();
     $('select').material_select();
 
@@ -36,21 +41,6 @@
     close: 'Ok',
     closeOnSelect: false // Close upon selecting a date,
     });
-
-    //  var slider = document.getElementById('guest-slider');
-    // noUiSlider.create(slider, {
-    //  start: [4, 15],
-    //  connect: true,
-    //  step: 1,
-    //  orientation: 'horizontal', // 'horizontal' or 'vertical'
-    //  range: {
-    //    'min': 0,
-    //    'max': 20
-    //  },
-    //  format: wNumb({
-    //    decimals: 0
-    //  })
-    // });
   });
 
   </script>
