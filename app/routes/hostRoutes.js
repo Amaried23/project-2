@@ -12,10 +12,26 @@ router.get('/hosts', async (req, res) => {
 })
 
 router.post('/hosts/add', async (req, res) => {
-    const payload = req.body
+    let form = req.body
+
+    const payload = {
+        first_name: form.first_name,
+        last_name: form.last_name,
+        email: form.email,
+        phone: form.phone,
+        address: form.address_street + ' ' + form.address_city + ' ' + form.address_state + ' ' + form.address_zip,
+        guest_count: form.guest_count,
+        location: {
+            coordinates: [
+                "-37.1196",
+                "42.6733"
+            ]
+        }
+    }
+    
     //TODO add validation
     await HostController.create(payload)
-    res.redirect('/hosts')
+    res.redirect('/add')
 })
 
 router.put('/hosts/update/:id', async (req, res) => {
