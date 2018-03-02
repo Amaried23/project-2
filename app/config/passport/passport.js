@@ -36,6 +36,8 @@
     },
 
     function(req, email, password, done){
+
+      console.log('passport is hit');
        
 
       var generateHash = function(password) {
