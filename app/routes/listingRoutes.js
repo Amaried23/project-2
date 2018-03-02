@@ -39,6 +39,7 @@ router.get('/listings/:page', async (req, res) => {
 
     let paginatedHosts = results[0]
     let pages = results[1]
+    //console.log('wah')
 
     res.render('listings', {
         title: "Listings",
