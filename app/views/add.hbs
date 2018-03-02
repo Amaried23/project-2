@@ -1,66 +1,4 @@
 
-
-  <div class="container">
-    <div class="section">
-
-       <!--   filter Section   -->
-      <div class="row">
-        <div class="col s12">
-          <div class="filterForm">
-            <form>
-            <div class="row">
-              <h5>Filter Results</h5>
-              <hr class="style">
-              <div class="input-field col s6">
-                <input id="filterAddress" type="text" class="validate">
-                <label for="filterAddress">Your Address</label>
-              </div>
-
-
-
-              <div class="input-field col s3">
-                <input id="checkIn" type="text" class="datepicker">
-                <label for="checkIn">Check In</label>
-              </div>
-
-              <div class="input-field col s3">
-                <input id="checkOut" type="text" class="datepicker">
-                <label for="checkOut">Check Out</label>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="input-field col s3">
-                <input id="guestNum" type="number" name="quantity" min="1" max="20">
-                <label for="guestNum">Number of Guests</label>
-              </div>
-              <div class="col s3 checkbox">
-                <input type="checkbox" id="hasPets">
-                <label for="hasPets">Pets?</label>
-              </div>
-              <div class="input-field col s3 right">
-                 <a href="#" class="waves-effect waves-light btn filterButton">Filter</a>
-              </div>
-            </div>
-          </form> 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-        </div>
-      </div>
-    </div>
-    <div class="parallax"><img src="/static/assets/images/background2.jpg" alt="Unsplashed background img 2"></div>
-  </div>
-
   <div class="container">
     <div class="section">
       <form action="/hosts/add" method="POST">
@@ -207,13 +145,13 @@
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="/static/assets/images/background3.jpg" alt="Unsplashed background img 3"></div>
+    <div class="parallax"><img src="/static/assets/images/background3.jpg" alt="Unsplashed background img 3">
+    </div>
   </div>
 
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH-6r9WrlUwy1swTIHIYFrm4IcXcjZDEk&libraries=geometry,places&callback=initMap">
-    </script>
+
+
+
 <script>
 
   $(document).ready(function(){
@@ -233,12 +171,6 @@
      })
     });
 
-    function initMap(){
-      var input = documet.getElementById("filterAddress");
-      var autocomplete = new google.maps.places.Autocomplete(input);
-    }
-
-
     $('.submitListing').on('click', function () {
       $('.hidden-count').val(slider.noUiSlider.get())
     })
@@ -246,11 +178,24 @@
 
   });
 
-
+function initMap(){
+      var input = document.getElementById("hostAddressStreet");
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    }
 
 
 
 </script>
+{{#sections 'head'}}
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH-6r9WrlUwy1swTIHIYFrm4IcXcjZDEk&libraries=geometry,places&callback=initMap"></script>
+<script type="text/javascript">
+     function initMap(){
+      var input = document.getElementById("filterAddress");
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+
+</script>
+{{/sections}}
   {{#sections 'footer'}}
   <script src="/static/assets/js/nouislider.js"></script>
 

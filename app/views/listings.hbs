@@ -68,8 +68,24 @@
 </div>
 {{/each}}
 
+{{#sections 'head'}}
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH-6r9WrlUwy1swTIHIYFrm4IcXcjZDEk&libraries=geometry,places&callback=initMap"></script>
+<script type="text/javascript">
+     function initMap(){
+      var input = document.getElementById("filterAddress");
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+
+
+</script>
+{{/sections}}
 {{#sections 'footer'}}
+
+ 
+
 <script>
+
+
   console.log('inig')
 
 
@@ -132,15 +148,14 @@
     });
   });
 
-        var autocomplete = new google.maps.places.Autocomplete(input);
+
+ 
 
 
 
 </script>
 
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH-6r9WrlUwy1swTIHIYFrm4IcXcjZDEk&callback=initMap">
-      </script>
+
 
 {{/sections }}
 
