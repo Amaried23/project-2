@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
   <div class="container">
     <div class="section">
@@ -61,52 +61,50 @@
     <div class="parallax"><img src="/static/assets/images/background2.jpg" alt="Unsplashed background img 2"></div>
   </div>
 
-=======
->>>>>>> master
   <div class="container">
     <div class="section">
-
+      <form action="/hosts/add" method="POST">
       <div class="row">
         <div class="col s12 center">
           <h4>Become a Host</h4>
           <hr class="style">
             <div class="input-field col s4 push-s2">
-              <input id="hostFirst_name" type="text" class="validate">
+              <input name="first_name" id="hostFirst_name" type="text" class="validate">
               <label for="hostFirst_name">First Name</label>
             </div>
             <div class="input-field col s4 push-s2">
-              <input id="hostLast_name" type="text" class="validate">
+              <input name="last_name" id="hostLast_name" type="text" class="validate">
               <label for="hostLast_name">Last Name</label>
             </div>
 
             <div class="row">
               <div class="input-field col s8 push-s2">
-                <input id="hostEmail" type="email" class="validate">
+                <input name="email" id="hostEmail" type="email" class="validate">
                 <label for="hostEmail">Email</label>
               </div>
             </div> 
 
             <div class="row">
               <div class="input-field col s8 push-s2">
-                <input id="hostPhone" type="tel" class="validate">
+                <input name="phone" id="hostPhone" type="tel" class="validate">
                 <label for="hostPhone">Phone Number</label>
               </div>
             </div>
 
             <div class="row">
               <div class="input-field col s8 push-s2">
-                <input id="hostAddressStreet" type="text" class="validate">
+                <input name="address_street" id="hostAddressStreet" type="text" class="validate">
                 <label for="hostAddressStreet">Address</label>
               </div>
             </div>
               
             <div class="row">
               <div class="input-field col s3 push-s2">
-                <input id="hostAddressCity" type="text" class="validate">
+                <input name="address_city" id="hostAddressCity" type="text" class="validate">
                 <label for="hostAddressCity">City</label>
               </div>
               <div class="input-field col s2 push-s2 hostState">
-                <select>
+                <select name="address_state">
                   <option value="" disabled selected>State</option>
                   <option value="AL">AL</option>
                   <option value="AK">AK</option>
@@ -164,17 +162,18 @@
               </div>
 
               <div class="input-field col s3 push-s2">
-                <input id="hostAddressZip" type="text" class="validate">
+                <input name="address_zip" id="hostAddressZip" type="text" class="validate">
                 <label for="hostAddressZip">Zip/Postal Code</label>
               </div>
             </div>
             <div class="row">
                 <div class="col s5 push-s2">
                   <div id="guest-slider"></div>
+                  <input class="hidden_count" value="5" type="text" hidden name="guest_count">
                   <label for="guest-slider"> Number of guests you want to host</label>
                 </div>
                 <div class="col s3 push-s2 valign-wrapper checkbox">
-                <input type="checkbox" id="hostPets">
+                <input name="pets" type="checkbox" id="hostPets">
                 <label for="hostPets">Allow Pets?</label>
               </div>
             </div>
@@ -195,6 +194,7 @@
             </div>
           </div>
         </div>
+        </form>
       </div>
     </div>
 
@@ -232,10 +232,17 @@
        decimals: 0
      })
     });
+
     function initMap(){
       var input = documet.getElementById("filterAddress");
       var autocomplete = new google.maps.places.Autocomplete(input);
     }
+
+
+    $('.submitListing').on('click', function () {
+      $('.hidden-count').val(slider.noUiSlider.get())
+    })
+
 
   });
 
@@ -244,7 +251,8 @@
 
 
 </script>
-        
+  {{#sections 'footer'}}
   <script src="/static/assets/js/nouislider.js"></script>
-   
+
+  {{/sections}}
 
