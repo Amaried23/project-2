@@ -9,8 +9,7 @@ const auth = {
     auth: {
       api_key: keys.mailgun,
       domain: 'sandbox643fe2531cc54b16b93ee92e1a51ea94.mailgun.org'
-    },
-    proxy: 'http://user:pass@localhost:8080' // optional proxy, default is false
+    } 
 }
 
 
@@ -18,13 +17,13 @@ router.post('/email/signup', (req, res) => {
     let nodemailerMailgun = nodemailer.createTransport(mg(auth));
 
     let text = {
-        text: req.body.text
+        text: req.body.email
     }
 
     nodemailerMailgun.sendMail({
         from: 'myemail@example.com',
-        to: 'spkellydev@gmail.com', // An array if you have multiple recipients.
-        subject: 'Hey you, awesome!',
+        to: text.email, // An array if you have multiple recipients.
+        subject: 'Thank you for Joining Helping Hands!',
         template: {
           name: 'app/views/emails/signup.hbs',
           engine: 'handlebars',
