@@ -1,3 +1,4 @@
+
   <div class="container">
     <div class="section">
       <form action="/hosts/add" method="POST">
@@ -154,10 +155,13 @@
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="/static/assets/images/background3.jpg" alt="Unsplashed background img 3"></div>
+    <div class="parallax"><img src="/static/assets/images/background3.jpg" alt="Unsplashed background img 3">
+    </div>
   </div>
 
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+
+
 <script>
 
   $(document).ready(function(){
@@ -181,9 +185,51 @@
       $('.hidden-count').val(slider.noUiSlider.get())
     })
 
+
   });
 
+function initMap(){
+      var input = document.getElementById("hostAddressStreet");
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+
+function geocoder(input){
+  
+}
+
+
+
+
+// var geocoder = new google.maps.Geocoder()
+//     geocoder.geocode({ 'address': mapLocation }, function (results, status) {
+//       if (status == 'OK') {
+//         myLatLng = results[0].geometry.location;
+      
+//           position: results[0].geometry.location
+
+//       });
+//         showMap(myLatLng)
+//         return myLatLng
+//       } else {
+//         console.log('geocode error');
+//       }
+//     });
+//   };
+
+
 </script>
+{{#sections 'head'}}
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH-6r9WrlUwy1swTIHIYFrm4IcXcjZDEk&libraries=geometry,places&callback=initMap"></script>
+<script type="text/javascript">
+     function initMap(){
+      var input = document.getElementById("filterAddress");
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    }
+
+</script>
+{{/sections}}
   {{#sections 'footer'}}
   <script src="/static/assets/js/nouislider.js"></script>
+
   {{/sections}}
+

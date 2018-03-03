@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col s12">
           <div class="filterForm">
-            <form>
+            <form id="filter">
             <div class="row">
               <h5>Filter Results</h5>
               <hr class="style">
@@ -44,6 +44,11 @@
       </div>
     </div>
   </div>
+
+  <div class="card-block" id="formatted-address"></div>
+    <div class="card-block" id="address-components"></div>
+    <div class="card-block" id="geometry"></div>
+    
 <h2>Total Pages:{{ pages }}</h2>
 
 <a class="special-link page-back" href="/listings/back">Previous Page</a>
@@ -68,8 +73,16 @@
 </div>
 {{/each}}
 
+{{!-- Google Autocomplete --}} 
+{{#sections 'head'}}
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH-6r9WrlUwy1swTIHIYFrm4IcXcjZDEk&libraries=geometry,places&callback=initMap"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+<script src="/static/assets/js/geocoder.js"></script>
+{{/sections}}
 {{#sections 'footer'}}
 <script>
+
+
   console.log('inig')
 
 
@@ -133,9 +146,13 @@
   });
 
 
+ 
+
 
 
 </script>
+
+
 
 {{/sections }}
 
