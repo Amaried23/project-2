@@ -20,8 +20,9 @@ class ListingController {
         return [hosts, pages]
     }
 
-    async byLocation(lat, lng, limit, guestCount) {
-        return await db.sequelize.query('SELECT id, first_name, last_name, guest_count, start_date, end_date, X(location) AS \'latitude\', Y(location) AS \'longitude\',(GLength(LineStringFromWKB(LineString(location,GeomFromText(\'POINT('+lat +' ' +lat+')\'))))) AS distance FROM hosts WHERE guest_count <=' + Number(guestCount) + ' ORDER BY distance ASC LIMIT ' + Number(limit) + ';').then((data) => {
+    async byLocation(lat, lng, limit, guestCount, startDate, endDate) {
+        return await db.sequelize.query('SELECT id, first_name, last_name, guest_count, start_date, end_date, X(location) AS \'latitude\', Y(location) AS \'longitude\',(GLength(LineStringFromWKB(LineString(location,GeomFromText(\'POINT('+lng +' ' +lat+')\'))))) AS distance FROM hosts WHERE start_date >= ' + String(startDate) + ' AND end_date >= ' + String(endDate) + ' AND guest_count >= ' + guestCount + ' ORDER BY distance ASC LIMIT ' + Number(limit) + ';').then((data) => {
+            console.log(data)
             return data
         }).catch(err => {
             if (err) console.log(err)

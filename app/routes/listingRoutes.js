@@ -15,7 +15,13 @@ router.get('/listings/:page', async (req, res) => {
     let limit = 5;
     let guestCount = 10;
     let located = false;
+    let startDate = new Date()
+    startDate = startDate.toISOString()
+    let endDate = new Date()
+    endDate = new Date(endDate.setDate(endDate.getDate() + 23)).toISOString()
 
+    console.log(startDate)
+    console.log(endDate)
     
     
     if (req.query) {
@@ -27,12 +33,23 @@ router.get('/listings/:page', async (req, res) => {
         if (req.query.guest_count) {
             guestCount = JSON.parse(req.query.guest_count)
         }
+
+        if (req.query.start_date && req.query.end_date) {
+            startDate = req.query.start_date
+            endDate = req.query.end_date
+        }
         
         if (req.query.lat && req.query.lng) {
             let lat = JSON.parse(req.query.lat)
             let lng = JSON.parse(req.query.lng)
             //get lat/lng from zip code
-            located = await ListingController.byLocation(parseFloat(lat),parseFloat(lng), limit, Number(guestCount))
+            console.log(lat)
+            console.log(lng)
+            console.log(limit)
+            console.log(guestCount)
+            console.log(startDate)
+            console.log(endDate)
+            located = await ListingController.byLocation(parseFloat(lat),parseFloat(lng), limit, Number(guestCount), startDate, endDate)
             console.log(located)
         }
     }

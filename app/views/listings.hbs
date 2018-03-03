@@ -63,7 +63,7 @@
         <span class="card-title">ID : {{ id }}</span>
       </div>
       <div class="card-content">
-        <p>{{first_name}} {{ last_name }}</p>
+        <p>{{first_name}} {{ last_name }} {{start_date}} {{end_date}} {{guest_count}}</p>
       </div>
       <div class="card-action">
         <a href="#">This is a link </a>
@@ -77,22 +77,27 @@
 {{#sections 'head'}}
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH-6r9WrlUwy1swTIHIYFrm4IcXcjZDEk&libraries=geometry,places&callback=initMap"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js"></script>
 <script src="/static/assets/js/geocoder.js"></script>
 <script>
   function initMap(){
     var input = document.getElementById("filterAddress");
     var autocomplete = new google.maps.places.Autocomplete(input);
   }
+
+  $(function() {
+     $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year
+    format: 'yyyy-mm-dd' });
+  })
 </script>
+
 {{/sections}}
 {{#sections 'footer'}}
 <script>
-
-
-  console.log('inig')
-
-
-  $(document).ready(function(){
+   $(document).ready(function(){
+     
     function page(page) {
       this.path = page
     }

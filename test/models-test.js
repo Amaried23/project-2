@@ -20,8 +20,8 @@ models.forEach(model => {
         let email = faker.fake("{{internet.email}}")
         let address = faker.fake("{{address.streetAddress}}")
         let phone = faker.phone.phoneNumberFormat().replace(/-/g, '')
-        let startDate = faker.date.recent()
-        let endDate = faker.date.future(faker.random.number(1))
+        let startDate = faker.date.between('2018-03-01', '2018-04-31')
+        let endDate = faker.date.between('2018-04-01', '2019-04-31')
         let guestCount = faker.random.number({min:1, max:10})
         var modelData = {
             guest_count: guestCount,
@@ -109,4 +109,4 @@ models.forEach(model => {
     })    
 });
 i++
-} while(i < 5)
+} while(i < 50000)

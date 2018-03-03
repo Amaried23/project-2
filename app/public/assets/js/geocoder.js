@@ -33,9 +33,10 @@
       var lat = response.data.results[0].geometry.location.lat;
       var lng = response.data.results[0].geometry.location.lng;
       var startDate = $('#checkIn').val()
-      console.log(startDate)
+      var endDate = $('#checkOut').val()
+ 
 
-      // window.location = window.location.origin + "/listings/1?limit=35&lat=" + lat + "&lng=" + lng + "&guest_count=5";
+      window.location = window.location.origin + "/listings/1?limit=35&lat=" + lat + "&lng=" + lng + "&guest_count=5" + "&start_date=" + startDate + "&end_date=" + endDate;
     })
     .catch(function(error){
       console.log(error);
