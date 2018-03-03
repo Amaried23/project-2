@@ -19,9 +19,6 @@ router.get('/listings/:page', async (req, res) => {
     startDate = startDate.toISOString()
     let endDate = new Date()
     endDate = new Date(endDate.setDate(endDate.getDate() + 23)).toISOString()
-
-    console.log(startDate)
-    console.log(endDate)
     
     
     if (req.query) {
