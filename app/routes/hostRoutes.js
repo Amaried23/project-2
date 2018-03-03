@@ -22,15 +22,18 @@ router.post('/hosts/add', async (req, res) => {
         address: form.address_street + ' ' + form.address_city + ' ' + form.address_state + ' ' + form.address_zip,
         guest_count: form.guest_count,
         location: {
+            type: "Point",
             coordinates: [
-                "-37.1196",
-                "42.6733"
+                "40.209896",
+                "-74.0225226"
             ]
         }
     }
+
+    console.log(payload)
     
     //TODO add validation
-    await HostController.create(payload)
+    // await HostController.create(payload)
     res.redirect('/add')
 })
 

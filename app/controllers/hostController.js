@@ -13,7 +13,9 @@ class HostsController {
     }
 
     async create(payload) {
-        await Hosts.create(payload)
+        await Hosts.create(payload).catch((err) => {
+            console.log(err)
+        })
     }
 
     async update(payload, id) {

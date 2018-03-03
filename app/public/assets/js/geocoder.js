@@ -8,7 +8,9 @@
 
   function geocode(e){
     // Prevent actual submit
-    e.preventDefault();
+    if (window.location.pathname.includes('listing')) {
+      e.preventDefault();
+    }
 
     var location = document.getElementById('filterAddress').value;
 
@@ -32,11 +34,13 @@
       // Geometry
       var lat = response.data.results[0].geometry.location.lat;
       var lng = response.data.results[0].geometry.location.lng;
-      var startDate = $('#checkIn').val()
-      var endDate = $('#checkOut').val()
- 
-
-      window.location = window.location.origin + "/listings/1?limit=35&lat=" + lat + "&lng=" + lng + "&guest_count=5" + "&start_date=" + startDate + "&end_date=" + endDate;
+  
+     
+      if (window.location.pathname.includes('listing')) {
+        var startDate = $('#checkIn').val()
+        var endDate = $('#checkOut').val()
+        window.location = window.location.origin + "/listings/1?limit=35&lat=" + lat + "&lng=" + lng + "&guest_count=5" + "&start_date=" + startDate + "&end_date=" + endDate;
+      }
     })
     .catch(function(error){
       console.log(error);

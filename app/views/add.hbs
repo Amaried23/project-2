@@ -1,7 +1,7 @@
 
   <div class="container">
     <div class="section">
-      <form action="/hosts/add" method="POST">
+      <form id="filter" action="/hosts/add" method="POST">
       <div class="row">
         <div class="col s12 center">
           <h4>Become a Host</h4>
@@ -31,7 +31,9 @@
 
             <div class="row">
               <div class="input-field col s8 push-s2">
-                <input name="address_street" id="hostAddressStreet" type="text" class="validate">
+                <input name="address_street" id="filterAddress" type="text" class="validate">
+                <input type="text" hidden id="lat" name="lat">
+                <input type="text" hidden id="lng" name="lng">
                 <label for="hostAddressStreet">Address</label>
               </div>
             </div>
@@ -120,14 +122,10 @@
                   <input class="hidden_count" value="5" type="text" hidden name="guest_count">
                   <label for="guest-slider"> Number of guests you want to host</label>
                 </div>
-                <div class="col s3 push-s2 valign-wrapper checkbox">
-                <input name="pets" type="checkbox" id="hostPets">
-                <label for="hostPets">Allow Pets?</label>
-              </div>
             </div>
             <div class="row">
               <div class="input-field col s6 push-s7 valign-wrapper">
-                <button href="/email/signup" class="btn waves-effect waves-light submitListing" type="submit" name="action">Submit Listing<i class="material-icons right">send</i>
+                <button href="/email/signup" class="btn waves-effect waves-light submitListing filterButton" type="submit" name="action">Submit Listing<i class="material-icons right">send</i>
                 </button>
               </div>
             </div>
@@ -182,52 +180,34 @@
     });
 
     $('.submitListing').on('click', function () {
-      $('.hidden-count').val(slider.noUiSlider.get())
+      $('.hidden-count').val(slider.noUiSlider.get()[0])
     })
 
 
   });
 
-function initMap(){
-      var input = document.getElementById("hostAddressStreet");
-      var autocomplete = new google.maps.places.Autocomplete(input);
-    }
-
-function geocoder(input){
-  
-}
-
-
-
-
-// var geocoder = new google.maps.Geocoder()
-//     geocoder.geocode({ 'address': mapLocation }, function (results, status) {
-//       if (status == 'OK') {
-//         myLatLng = results[0].geometry.location;
-      
-//           position: results[0].geometry.location
-
-//       });
-//         showMap(myLatLng)
-//         return myLatLng
-//       } else {
-//         console.log('geocode error');
-//       }
-//     });
-//   };
-
-
 </script>
+
 {{#sections 'head'}}
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH-6r9WrlUwy1swTIHIYFrm4IcXcjZDEk&libraries=geometry,places&callback=initMap"></script>
-<script type="text/javascript">
-     function initMap(){
-      var input = document.getElementById("filterAddress");
-      var autocomplete = new google.maps.places.Autocomplete(input);
-    }
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js"></script>
+<script src="/static/assets/js/geocoder.js"></script>
+<script>
+  function initMap(){
+    var input = document.getElementById("filterAddress");
+    var autocomplete = new google.maps.places.Autocomplete(input);
+  }
+  $(function() {
+     $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year
+    format: 'yyyy-mm-dd' });
+  })
 </script>
+
 {{/sections}}
+
   {{#sections 'footer-1'}}
   <script src="/static/assets/js/nouislider.js"></script>
 
