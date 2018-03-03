@@ -17,7 +17,11 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="/add">Host Victims</a></li>
         <li><a href="/listings">Listings</a></li>
+        {{#if auth}}
+        <li><a href="#modalSignout" class="modal-trigger logOut">Sign Out</a></li>
+        {{else}}
         <li><a href="#modalLogin" class="modal-trigger">Member Login</a></li>
+        {{/if}}
         
       </ul>
       
@@ -27,7 +31,11 @@
         <li><a href="/">Home</a></li>
         <li><a href="/add">Host Victims</a></li>
         <li><a href="/listings">Listings</a></li>
-        <li><a href="#modalLogin" class="modal-trigger">Member Login</a>
+        {{#if auth}}
+        <li><a href="/" class="logOut">Sign Out</a></li>
+        {{else}}
+        <li><a href="#modalLogin" class="modal-trigger">Member Login</a></li>
+        {{/if}}
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>

@@ -18,13 +18,15 @@ router.post('/email/signup', (req, res) => {
     let nodemailerMailgun = nodemailer.createTransport(mg(auth));
 
     let text = {
-        text: req.body.text
+        email: req.body.email,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname
     }
 
     nodemailerMailgun.sendMail({
         from: 'myemail@example.com',
-        to: 'spkellydev@gmail.com', // An array if you have multiple recipients.
-        subject: 'Hey you, awesome!',
+        to: text.email, // An array if you have multiple recipients.
+        subject: 'Thank you for Joining Helping Hands!',
         template: {
           name: 'app/views/emails/signup.hbs',
           engine: 'handlebars',
@@ -41,7 +43,7 @@ router.post('/email/signup', (req, res) => {
 
       console.log('success')
 
-    res.redirect('/login')
+    res.redirect('/')
 })
 
 module.exports = router

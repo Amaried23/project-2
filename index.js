@@ -1,5 +1,7 @@
 const express = require('express')
+const passport   = require('passport')
 const stripeKey = require('./app/config/keys').stripe
+const session    = require('express-session')
 const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars')
 const path = require('path')
@@ -8,6 +10,7 @@ const PORT = process.env.PORT || 3000
 const app = express()
 const faker = require('faker')
 var stripe = require("stripe")(stripeKey);
+const env        = require('dotenv').load()
 
 //Handlebars View Engine
 app.engine('hbs', exphbs({
@@ -29,6 +32,12 @@ app.set('views', path.join(__dirname, 'app/views'))
 //Middleware for Body Parser
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+
+// For Passport
+app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
 //Static Files
 app.use('/static', express.static(path.join(__dirname, '/app/public')));
 
@@ -37,12 +46,14 @@ let hostRoutes = require('./app/routes/hostRoutes');
 let emailRoutes = require('./app/controllers/EmailController');
 let listingRoutes = require('./app/routes/listingRoutes');
 let donorRoutes = require("././app/routes/donorRoutes");
+var authRoute = require('./app/routes/auth.js')(app,passport);
 
 app.use(emailRoutes)
 app.use(victimRoutes)
 app.use(hostRoutes)
 app.use(listingRoutes)
 app.use(donorRoutes);
+//app.use(authRoute);
 
 app.get('/', function (req, res) {
     res.render('index', {
@@ -73,6 +84,12 @@ app.get('/contact', (req, res) => {
         title: 'Contact'
     })
 })
+
+//Models
+    var models = require("./app/models");
+
+    //load passport strategies
+    require('./app/config/passport/passport.js')(passport,models.user);
 
 db.sequelize.sync().then(function () {
     app.listen(PORT, () => console.log('PORT started on ' + PORT))
