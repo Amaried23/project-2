@@ -21,6 +21,7 @@
     "faker": "^4.1.0",
     "mailgun": "^0.5.0",
     "materialize-social": "^1.0.3",
+    "mdi": "^2.1.19",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.2",
     "nodemailer": "^4.6.0",
