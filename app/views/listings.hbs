@@ -82,46 +82,25 @@
 
 
 {{!-- Google Autocomplete --}} 
-{{#sections 'head'}}
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH-6r9WrlUwy1swTIHIYFrm4IcXcjZDEk&libraries=geometry,places&callback=initMap"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js"></script>
-<script src="/static/assets/js/geocoder.js"></script>
-<script>
-  function initMap(){
-    var input = document.getElementById("filterAddress");
-    var autocomplete = new google.maps.places.Autocomplete(input);
-  }
 
-  $(function() {
-     $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15, // Creates a dropdown of 15 years to control year
-    format: 'yyyy-mm-dd' });
-  })
-</script>
-
-{{/sections}}
-{{#sections 'footer'}}
+{{#sections 'footer-1'}}
 <script>
    $(document).ready(function(){
-     
     function page(page) {
       this.path = page
     }
 
-    $('a').on('click', function (e) {
+    $('.special-link').on('click', function (e) {
       e.preventDefault()
       var link = e.target.classList;
       let referral = window.location.href;
-      console.log(referral)
       let paginate = new page(referral);
       paginate.currentPage = function () {
         return this.path;
       }
 
       paginate.url = function (link, newPage, queryString) {
-        console.log(link + "/listings/" + newPage + "?" + queryString)
+        console.log('url' + link + "/listings/" + newPage + "?" + queryString)
         window.location = link + "/listings/" + newPage + "?" + queryString
       }
 
@@ -135,6 +114,7 @@
         link = window.location.origin;
 
         var newPage = Number(pageNum) + 1;
+        console.log(newPage + 'new page')
 
         this.url(link, newPage, queryString);
       }
@@ -153,6 +133,7 @@
         this.url(link, newPage, queryString);
       }
 
+
       for (var i = 0; i < link.length; i++) {
         if (link[i] === 'page-next') {
           paginate.nextPage()
@@ -163,15 +144,6 @@
 
     });
   });
-
-
- 
-
-
-
 </script>
-
-
-
-{{/sections }}
+{{/sections}}
 
