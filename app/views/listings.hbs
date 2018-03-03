@@ -45,33 +45,41 @@
     </div>
   </div>
 
-  <div class="card-block" id="formatted-address"></div>
-    <div class="card-block" id="address-components"></div>
-    <div class="card-block" id="geometry"></div>
-    
-<h2>Total Pages:{{ pages }}</h2>
-
-<a class="special-link page-back" href="/listings/back">Previous Page</a>
-<a class="special-link page-next" href="/listings/next">Next Page</a>
-
-{{#each hosts}}
-<div class="row">
-  <div class="col s12 m7">
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="http://materializecss.com/images/sample-1.jpg">
-        <span class="card-title">ID : {{ id }}</span>
-      </div>
-      <div class="card-content">
-        <p>{{first_name}} {{ last_name }} {{start_date}} {{end_date}} {{guest_count}}</p>
-      </div>
-      <div class="card-action">
-        <a href="#">This is a link </a>
+    <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s12">
+          <h3 class="center">Total Pages: {{ pages }}</h3>
+          {{#each hosts}}
+          <div class="row">
+            <div class="col s12">
+              <div class="card horizontal">
+                <div class="card-image">
+                  <img src="/static/assets/images/home-solid/256x256.png">
+                </div>
+                <div class="card-content">
+                  <span class="card-title black-text">ID : {{ id }}</span>
+                  <p class="card-title black-text"> Name: {{first_name}} {{ last_name }} </p>
+                  <p class="card-title black-text"> Address: {{address}} </p>
+                  <p class="card-title black-text"> Email Address: {{email}} </p>
+                  <a href="#">This is a link </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}<ul class="pagination center">
+            <li class="waves-effect"><a class="special-link page-back" href="/listings/back">Previous Page</a></li>
+            <li class="waves-effect"><a class="special-link page-next" href="/listings/next">Next Page</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
-{{/each}}
+
+
+
+
+
 
 {{!-- Google Autocomplete --}} 
 {{#sections 'head'}}
@@ -102,7 +110,7 @@
       this.path = page
     }
 
-    $('.special-link').on('click', function (e) {
+    $('a').on('click', function (e) {
       e.preventDefault()
       var link = e.target.classList;
       let referral = window.location.href;

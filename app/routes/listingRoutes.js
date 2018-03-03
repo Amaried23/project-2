@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const faker = require('faker')
 const listingController = require('../controllers/ListingController').ListingController
 const ListingController = new listingController()
 
