@@ -13,38 +13,54 @@ router.get('/listings/:page', async (req, res) => {
     // let unfilteredHosts = await ListingController.index()
     let page = req.params.page
     let limit = 5;
+    let guestCount = 10;
+    let located = false;
 
     
     
     if (req.query) {
+        console.log(req.query)
         if (req.query.limit) {
             limit = JSON.parse(req.query.limit)
         }
+
+        if (req.query.guest_count) {
+            guestCount = JSON.parse(req.query.guest_count)
+        }
         
-        if (req.query.zip) {
-            let zip = JSON.parse(req.query.zip)
+        if (req.query.lat && req.query.lng) {
+            let lat = JSON.parse(req.query.lat)
+            let lng = JSON.parse(req.query.lng)
             //get lat/lng from zip code
-            let located = await ListingController.byLocation(51.5177, -0.0968)
+            located = await ListingController.byLocation(parseFloat(lat),parseFloat(lng), limit, Number(guestCount))
             console.log(located)
         }
     }
 
-    let results = await ListingController.paginate(page, {
-        limit: limit,
-        offset: 0,
-        $sort: { 
-            id: 1 
-        }
-    })
-
-    let paginatedHosts = results[0]
-    let pages = results[1]
-
-    res.render('listings', {
-        title: "Listings",
-        hosts: paginatedHosts,
-        pages
-    })
+    if (!located) {
+        let results = await ListingController.paginate(page, {
+            limit: limit,
+            offset: 0,
+            $sort: { 
+                id: 1 
+            }
+        })
+    
+        let paginatedHosts = results[0]
+        let pages = results[1]
+    
+        res.render('listings', {
+            title: "Listings",
+            hosts: paginatedHosts,
+            pages
+        })
+    } else {
+        console.log('fired')
+        res.render('listings', {
+            title: "Listings",
+            hosts: located[0]
+        })
+    }
 
 })
 

@@ -1,7 +1,4 @@
-function initMap(){
-    var input = document.getElementById("filterAddress");
-    var autocomplete = new google.maps.places.Autocomplete(input);
-  }
+
 
   // Get location form
   var locationForm = document.getElementById('filter');
@@ -35,8 +32,10 @@ function initMap(){
       // Geometry
       var lat = response.data.results[0].geometry.location.lat;
       var lng = response.data.results[0].geometry.location.lng;
+      var startDate = $('#checkIn').val()
+      console.log(startDate)
 
-      document.getElementById('geometry').innerHTML = geometryOutput;
+      // window.location = window.location.origin + "/listings/1?limit=35&lat=" + lat + "&lng=" + lng + "&guest_count=5";
     })
     .catch(function(error){
       console.log(error);
