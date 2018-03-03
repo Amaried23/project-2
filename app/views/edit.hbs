@@ -190,34 +190,34 @@
 
   });
 
-  // Gets post data for the current user 
-  function getListingData(id, type) {
+  // // Gets post data for the current user 
+  // function getListingData(id, type) {
     
-    var queryUrl;
-        queryUrl = "/hosts/" + id;
+  //   var queryUrl;
+  //       queryUrl = "/hosts/" + id;
  
-    $.get(queryUrl, function(data) {
-      if (data) {
-        console.log(data.AuthorId || data.id);
-        // If this post exists, prefill
-        first_name.val(data.first_name);
-        last_name.val(data.last_name);
-        email.val(data.email);
-      }
-    });
-  }
+  //   $.get(queryUrl, function(data) {
+  //     if (data) {
+  //       console.log(data.AuthorId || data.id);
+  //       // If this post exists, prefill
+  //       first_name.val(data.first_name);
+  //       last_name.val(data.last_name);
+  //       email.val(data.email);
+  //     }
+  //   });
+  // }
 
-  // Update a given post
-  function updateListing(post) {
-    $.ajax({
-      method: "PUT",
-      url: "/hosts/update/:id",
-      data: post
-    })
-    .then(function() {
-      window.location.href = "/";
-    });
-  }
+  // // Update a given post
+  // function updateListing(post) {
+  //   $.ajax({
+  //     method: "PUT",
+  //     url: "/hosts/update/:id",
+  //     data: post
+  //   })
+  //   .then(function() {
+  //     window.location.href = "/";
+  //   });
+  // }
 
 function initMap(){
       var input = document.getElementById("hostAddressStreet");
