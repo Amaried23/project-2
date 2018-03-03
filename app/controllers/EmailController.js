@@ -9,7 +9,8 @@ const auth = {
     auth: {
       api_key: keys.mailgun,
       domain: 'sandbox643fe2531cc54b16b93ee92e1a51ea94.mailgun.org'
-    } 
+    },
+    proxy: 'http://user:pass@localhost:8080' // optional proxy, default is false
 }
 
 
@@ -17,7 +18,9 @@ router.post('/email/signup', (req, res) => {
     let nodemailerMailgun = nodemailer.createTransport(mg(auth));
 
     let text = {
-        text: req.body.email
+        email: req.body.email,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname
     }
 
     nodemailerMailgun.sendMail({

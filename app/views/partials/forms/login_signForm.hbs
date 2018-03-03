@@ -84,3 +84,21 @@
           </form>
         </div>
       </div>
+
+
+      {{#sections 'footer'}}
+        <script>
+          $(function() {
+            $('#signup').submit(function(e) {
+              var data = $('#signup').serialize()
+              console.log(data)
+              $.ajax({
+                  type: "POST",
+                  url: "/email/signup",
+                  data: data,
+                  dataType: "json"
+              });
+            });
+          });
+        </script>
+      {{/sections}}
