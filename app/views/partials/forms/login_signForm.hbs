@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  <!-- Login Modal Structure -->
       <div  id="modalLogin" class="modal">
         <div class="modal-content">
@@ -42,4 +43,91 @@
           <h5>You've been signed out.</h5>
           <hr class="style">
         </div>
+=======
+ <!-- Login Modal Structure -->
+      <div id="modalLogin" class="modal">
+        <div class="modal-content">
+          <h4>Log In</h4>
+          <hr class="style">
+          <form>
+            <div class="row">
+              <div class="input-field col s6 push-s3">
+                <input id="loginEmail" type="email" class="validate">
+                <label for="loginEmail">Email</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6 push-s3">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6 push-s6 valign-wrapper">
+                <a href="/edit" class="modal-action modal-close waves-effect waves-light btn loginButt">Log In</a>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <div class="center">
+                  <hr class="style">
+                  <p>Not a Member? <a class="modal-trigger modal-close center link" href="#modalSignup">Sign Up</a></p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Sign up Modal Structure -->
+      <div id="modalSignup" class="modal">
+        <div class="modal-content">
+          <h4>Become a Member</h4>
+          <hr class="style">
+          <form id="signup" name="signup" method="post" action="/signup">
+            <div class="row">
+              <div class="input-field col s6 push-s3">
+                <input class="text" name="email" type="email" class="validate">
+                <label for="Email">Email</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s4 push-s2">
+                  <input name="firstname" type="text" class="validate">
+                  <label for="firstname">First name</label>
+                </div>
+                <div class="input-field col s4 push-s2">
+                    <input name="lastname" type="text" class="validate">
+                  <label for="lastname">Last name</label>
+                </div>
+              </div>
+
+            <div class="row">
+              <div class="input-field col s6 push-s3">
+                <input name="password" type="password" class="validate">
+                <label for="password"> Create a Password</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s6 push-s6 valign-wrapper">
+                  <input class="btn" type="submit" value="Sign Up" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <div class="center">
+                  <hr class="style">
+                  <p>Already a Member? <a class="modal-trigger modal-close center link" href="#modalLogin">Log In</a></p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+>>>>>>> alexis_branch
       </div>
